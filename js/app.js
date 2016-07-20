@@ -13,6 +13,7 @@
   var services = angular.module("starter.services", []);
   
   require('./controllers/app-controller');
+  require('./services/example-service');
 
   //require controllers, services etc.
 
