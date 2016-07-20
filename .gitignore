@@ -1,0 +1,12 @@
+lib/
+.sass-cache/
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+.idea
+node_modules/
+platforms/
+plugins/
+*.DS_Store
+js/bundles/*
+js/utility/templates.js
+js/bundles/*.js
