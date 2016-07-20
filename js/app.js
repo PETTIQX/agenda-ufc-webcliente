@@ -61,9 +61,13 @@
         url: "/",
         templateUrl: "templates/app.html",
         controller: "AppController"
+      }).state("otherwise",{
+        url: "{path:.*}",
+        templateUrl: "templates/app.html",
+        controller: "AppController"
       });
 
-      $urlRouterProvider.otherwise("/");
+      //$urlRouterProvider.otherwise("/");
 
   }]);
 
