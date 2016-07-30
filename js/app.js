@@ -14,6 +14,7 @@
   
   require('./controllers/app-controller');
   require('./services/example-service');
+  require('./controllers/atividades-controller');
 
   //require controllers, services etc.
 

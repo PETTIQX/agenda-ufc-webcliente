@@ -36,6 +36,7 @@ img.responsive-img{
 }
 
 footer.page-footer {
+  background-color: #193d58;
   margin-top: 0px;
   padding-top: 0px;
   position: fixed;
@@ -47,11 +48,6 @@ footer.page-footer {
 .fixed-action-btn {
   bottom: 25px;
   right: 24px;
-}
-
-.light, footer.page-footer .footer-copyright {
-  background: white;
-  color: black;
 }
 
 nav {
