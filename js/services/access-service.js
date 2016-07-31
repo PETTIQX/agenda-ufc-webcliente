@@ -33,6 +33,10 @@
           return $q.reject(Access.FORBIDDEN);
         };
 
+        Access.isPublic = function(){
+          return Access.OK;
+        };
+
         return Access;
 
     }

@@ -12,9 +12,21 @@
   var factories = angular.module("starter.factories", []);
   var services = angular.module("starter.services", []);
   
+
+  require('./constants/config');
+  require('./constants/routes');
+
+  require('./directives/menu-directive');
+  require('./directives/footer-directive');
+  
+  require('./services/app-toolkit');
+  require('./services/access-service');
+  require('./services/atividade-service');
+
   require('./controllers/app-controller');
-  require('./services/example-service');
-  require('./controllers/atividades-controller');
+  require('./controllers/main-app-controller');
+  require('./controllers/atividade-controller');
+  
 
   //require controllers, services etc.
 
@@ -33,7 +45,23 @@
   /**
   * Main function
   */
-  .run(["$rootScope", "$state", function ($rootScope, Access, $state) {
+  .run(["$rootScope", "Access", "$state", function ($rootScope, Access, $state) {
+
+
+
+    $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
+      //em alguns casos mandar para login
+      console.log(error);
+      if (error == Access.UNAUTHORIZED) {
+        $state.go("app");
+      } else if (error == Access.FORBIDDEN) {
+        $state.go("app");
+      } else if( error == Access.OK){
+        $state.go("app");
+      } else{
+        $state.go("app");
+      }
+    });
 
 
     }])
@@ -62,11 +90,26 @@
       .state("app", {
         url: "/",
         templateUrl: "templates/app.html",
-        controller: "AppController"
-      }).state("otherwise",{
+        controller: "AppController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("atividade-detalhes", {
+        url: "/detalhes-atividade/:atividadeId",
+        templateUrl: "templates/detalhes-atividade.html",
+        controller: "AtividadeController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("otherwise",{
         url: "{path:.*}",
         templateUrl: "templates/app.html",
-        controller: "AppController"
+        controller: "AppController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isOtherwise(); }]
+        }
       });
 
       //$urlRouterProvider.otherwise("/");

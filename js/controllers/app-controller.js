@@ -4,19 +4,28 @@
 
   var controllers = angular.module('starter.controllers');
 
-  function AppController($scope, $rootScope) {
+  function AppController($scope, $rootScope, AtividadeService) {
 
-   	$scope.init = function(){
+   	$scope.init	 = function(){
 
-   		console.log("init running");
+   		$scope.atividades = [];      	
+
+   		AtividadeService.buscaEventos().then(
+	   		function(response){
+	   			console.log(response.data);
+	   			$scope.atividades = response.data;
+	   		},
+	   		function(error){
+	   			console.log(error.data);
+	   		}
+   		)	
 
    	};
 
-   	$scope.teste = "teste angular";
 
   }
 
-  AppController.$inject = ["$scope","$rootScope"];
+  AppController.$inject = ["$scope","$rootScope", "AtividadeService"];
 
   module.exports = controllers.controller("AppController", AppController);
 })();
