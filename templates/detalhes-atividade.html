@@ -1,5 +1,34 @@
 <div class="container" ng-init="init()">
 
-{{atividade._id}}
+    <h2>{{atividade.nome}}</h2>
+    
+
+    <div class="slider" ng-if="atividade.imagens.lenght > 0">
+        <ul class="slides">
+            <div ng-repeat="imagem in atividade.imagens"> 
+                <li>
+                    <img ng-src="{{imagem}}">
+                    <div class="caption center-align">
+                    <!--<h3>This is our big Tagline!</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5> -->
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <p><b>Categoria: </b>{{atividade.categoria}}</p>
+    <p><b>Local: </b>{{atividade.local.nome}} - {{atividade.local.descricao}}</p>
+    <p ng-if="atividade.horarios.length > 0">
+        <b>Horários: </b>
+        <div ng-repeat="horario in atividade.horarios">
+            {{horario}}
+            <br>
+        </div>
+    </p>
+    <p>
+        <div ng-repeat="tag in tags">
+            <span class="new badge blue">{{tag}}</span>
+        </div>
+    </p>
 
 </div>

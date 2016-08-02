@@ -8,13 +8,13 @@
         <div class="card small">
           <div class="card-image">
             <img src="http://blog.sympla.com.br/wp-content/uploads/2013/07/iStock_000012681389Small-800x532.jpg">
-            <span class="card-title">Card Title - DD/MM/AAAA</span>
+            <span class="card-title">{{atividade.nome}} - {{atividade.categoria}}</span>
           </div>
           <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+            <p>{{atividade.descricao}}</p>
           </div>
           <div class="card-action">
-            <a ui-sref="atividade-detalhes({atividadeId: atividade._id})">{{atividade.nome}}</a>
+            <a ui-sref="atividade-detalhes({atividadeId: atividade._id})">Detalhes</a>
           </div>
         </div>
       </div>

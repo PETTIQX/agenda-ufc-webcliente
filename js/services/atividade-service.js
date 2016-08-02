@@ -21,8 +21,18 @@
             return $http.post(BUSCA_EVENTOS, params);
         }
 
-        return AtividadeService;
+        AtividadeService.buscaEventoPorId = buscaEventoPorId;
 
+        function buscaEventoPorId(id) {
+            var params = {
+                query:{
+                    _id : id
+                }
+            };
+            return $http.post(BUSCA_EVENTOS, params);
+        }
+        
+        return AtividadeService;
     }
 
     module.exports = services.service("AtividadeService", AtividadeService);
