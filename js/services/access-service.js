@@ -13,7 +13,7 @@
         Access.FORBIDDEN= 403;
 
         Access.isAnonymous = function(){
-            if($rootScope.token){
+            if(localStorage.token){
                 return $q.reject(Access.OK);
             }else{
                 return Access.OK;
@@ -22,7 +22,7 @@
 
 
         Access.isAuthenticated = function(){
-            if($rootScope.token){
+            if(localStorage.token){
                 return Access.OK;
             }else{
                 return $q.reject(Access.UNAUTHORIZED);

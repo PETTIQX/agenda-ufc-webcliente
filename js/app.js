@@ -49,7 +49,9 @@
   */
   .run(["$rootScope", "Access", "$state", function ($rootScope, Access, $state) {
 
-
+    if(localStorage.token){
+      $rootScope.auth = true;
+    }
 
     $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
       //em alguns casos mandar para login
