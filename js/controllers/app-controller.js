@@ -10,7 +10,7 @@
 
    		$scope.atividades = [];      	
 
-   		AtividadeService.buscaEventos().then(
+   		AtividadeService.buscarAtividades().then(
 	   		function(response){
 	   			console.log(response.data);
 	   			$scope.atividades = response.data;

@@ -16,7 +16,7 @@
       //fazer busca da atividade pelo id
       $scope.atividade = {_id:$stateParams.atividadeId};
 
-      AtividadeService.buscaEventoPorId($stateParams.atividadeId).then(
+      AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
         function(response){
 	   			console.log(response.data);
 	   	    $scope.atividade = response.data[0];	

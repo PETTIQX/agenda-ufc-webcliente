@@ -8,8 +8,11 @@
 
     var routes =
       {
-          BUSCA_EVENTOS: "/api/public/atividade/busca",
+          BUSCA_ATIVIDADES: "/api/public/atividade/busca",
+          PRIVATE_ATIVIDADE: "/api/private/atividade",
           LOGIN: "/api/public/usuario/login",
+          BUSCA_LOCAIS: "/api/public/local/busca",
+          PRIVATE_LOCAL: "/api/private/local"
       };
     return routes;
   }

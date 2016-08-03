@@ -1,0 +1,25 @@
+<div class="container" ng-init="init()">
+
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Nome" id="first_name" type="text" class="validate" ng-model="local.nome">
+          <label for="first_name">Nome</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea" ng-model="local.descricao"></textarea>
+                    <label for="textarea1">Descrição</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="waves-effect waves-light btn" ng-click="cadastrarLocal(local)" >Entrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

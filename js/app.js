@@ -22,11 +22,13 @@
   require('./services/app-toolkit');
   require('./services/access-service');
   require('./services/atividade-service');
+  require('./services/local-service');
   require('./services/login-service')
 
   require('./controllers/app-controller');
   require('./controllers/main-app-controller');
   require('./controllers/atividade-controller');
+  require('./controllers/local-controller');
   require('./controllers/login-controller');
   
 

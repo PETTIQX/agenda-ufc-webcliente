@@ -19,7 +19,6 @@
                             localStorage.user = $rootScope.user;
                         }
 
-                        //alert("Deu certo!");
                         //mudar para página inicial
                         $state.go('app');
                     },
