@@ -36,7 +36,7 @@
     /**
     * Libraries modules dependencies
     */
-    "ui.router","ui.materialize","ngMap",
+    "ui.router","ui.materialize","ngMap","angular-jwt",
 
     /**
     * Our modules  dependencies
@@ -51,6 +51,7 @@
 
     if(localStorage.token){
       $rootScope.auth = true;
+      $rootScope.user = localStorage.user;
     }
 
     $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {

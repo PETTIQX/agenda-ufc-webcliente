@@ -4,7 +4,7 @@
 
     var controllers = angular.module('starter.controllers');
 
-    function LoginController($scope, $rootScope, $stateParams, $state, LoginService) {
+    function LoginController($scope, $rootScope, $stateParams, $state, LoginService, jwtHelper) {
         
         $scope.init = function(){
             
@@ -14,7 +14,9 @@
                         console.log(response.data);
                         if(response.data.token){
                             localStorage.token = response.data.token;
+                            $rootScope.user = jwtHelper.decodeToken(response.data.token);
                             $rootScope.auth = true;
+                            localStorage.user = $rootScope.user;
                         }
 
                         //alert("Deu certo!");
@@ -32,7 +34,7 @@
 
     }
 
-    LoginController.$inject  = ["$scope", "$rootScope", "$stateParams", "$state", "LoginService"];
+    LoginController.$inject  = ["$scope", "$rootScope", "$stateParams", "$state", "LoginService","jwtHelper" ];
 
     module.exports = controllers.controller("LoginController", LoginController);
 
