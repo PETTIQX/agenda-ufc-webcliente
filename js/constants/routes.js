@@ -9,6 +9,7 @@
     var routes =
       {
           BUSCA_EVENTOS: "/api/public/atividade/busca",
+          LOGIN: "/api/public/usuario/login",
       };
     return routes;
   }

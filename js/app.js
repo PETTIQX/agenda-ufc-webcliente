@@ -22,10 +22,12 @@
   require('./services/app-toolkit');
   require('./services/access-service');
   require('./services/atividade-service');
+  require('./services/login-service')
 
   require('./controllers/app-controller');
   require('./controllers/main-app-controller');
   require('./controllers/atividade-controller');
+  require('./controllers/login-controller');
   
 
   //require controllers, services etc.
@@ -99,6 +101,14 @@
         url: "/detalhes-atividade/:atividadeId",
         templateUrl: "templates/detalhes-atividade.html",
         controller: "AtividadeController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("login", {
+        url: "/login",
+        templateUrl: "templates/login.html",
+        controller: "LoginController",
         resolve: {
           access: ["Access", function (Access) { return Access.isPublic(); }]
         }
