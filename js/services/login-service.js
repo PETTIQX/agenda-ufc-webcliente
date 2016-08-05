@@ -8,6 +8,8 @@
 
         var LOGIN = AppTollkit.serviceAddress(routes.LOGIN);
         
+        var LoginService = {};
+
         LoginService.login = login;
 
         function login(usuario, senha) {

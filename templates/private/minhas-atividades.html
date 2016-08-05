@@ -1,0 +1,23 @@
+<div class="container" ng-init="init()">
+    <div class="row">
+        <div ng-repeat="atividade in atividades" class="col s12 m4">
+            <div class="card small">
+                <div class="card-image">
+                    <img src="http://blog.sympla.com.br/wp-content/uploads/2013/07/iStock_000012681389Small-800x532.jpg">
+                    <span class="card-title">{{atividade.nome}} - {{atividade.categoria}}</span>
+                </div>
+            <div class="card-content">
+                <p>{{atividade.descricao}}</p>
+            </div>
+            <div class="card-action">
+                <a ui-sref="atividade-detalhes({atividadeId: atividade._id})">Detalhes</a>
+                <a ui-sref="editar-atividade({atividadeId : atividade._id})">Editar</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a class="btn-floating btn-large waves-effect waves-light blue" ui-sref="cadastro-atividade({userToken : token})"><i class="material-icons">add</i></a>  
+    
+  </div>
+</div>

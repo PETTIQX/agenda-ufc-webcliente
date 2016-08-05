@@ -7,6 +7,7 @@
     function AtividadeService($http, $q, config, routes, AppTollkit) {
 
         var BUSCA_ATIVIDADES = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES);
+        var BUSCA_ATIVIDADES_PRIVADA = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES_PRIVADA);
         var PRIVATE_ATIVIDADE = AppTollkit.serviceAddress(routes.PRIVATE_ATIVIDADE);
 
         var AtividadeService = {};
@@ -33,9 +34,23 @@
             return $http.post(BUSCA_ATIVIDADES, params);
         }
         
+        AtividadeService.buscarAtividadePorUsuario = buscarAtividadePorUsuario;
+
+        function buscarAtividadePorUsuario(userToken){
+            var req = {
+                method : "GET",
+                url : BUSCA_ATIVIDADES_PRIVADA,
+                headers : {
+                    "X-Auth" : userToken
+                },
+                data : {}
+            };
+            return $http(req);
+        }
+
         AtividadeService.cadastrarAtividade = cadastrarAtividade;
 
-        function cadastrarAtividade(atividade) {
+        function cadastrarAtividade(atividade, userToken) {
 
             var params = {
                 atividade : {
@@ -50,25 +65,41 @@
                 }
             };
 
-            return $http.post(PRIVATE_ATIVIDADE, params);
+            var req = {
+                method : "POST",
+                url : PRIVATE_ATIVIDADE,
+                headers : {
+                    "X-Auth" : userToken
+                },
+                data : params
+            };
+            return $http(req);
 
         }
 
         AtividadeService.removerAtividade = removerAtividade;
 
-        function removerAtividade(idAtividade) {
+        function removerAtividade(idAtividade, userToken) {
 
             var params = {
                 idAtividade : idAtividade
             };
 
-            return $http.delete(PRIVATE_ATIVIDADE, params);
+            var req = {
+                method : "DELETE",
+                url : PRIVATE_ATIVIDADE,
+                headers : {
+                    "X-Auth" : userToken
+                },
+                data : params
+            };
+            return $http(req);
 
         }
 
         AtividadeService.atualizarAtividade = atualizarAtividade;
 
-        function atualizarAtividade(atividade) {
+        function atualizarAtividade(atividade, userToken) {
 
             var params = {
                 atividade : {
@@ -84,7 +115,15 @@
                 }
             };
 
-            return $http.put(PRIVATE_ATIVIDADE, params);
+            var req = {
+                method : "PUT",
+                url : PRIVATE_ATIVIDADE,
+                headers : {
+                    "X-Auth" : userToken
+                },
+                data : params
+            };
+            return $http(req);
 
         }
 

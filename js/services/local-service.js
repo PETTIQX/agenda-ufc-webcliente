@@ -9,7 +9,9 @@
         var PRIVATE_LOCAL = AppTollkit.serviceAddress(routes.PRIVATE_LOCAL);
         var BUSCA_LOCAIS = AppTollkit.serviceAddress(routes.BUSCA_LOCAIS);
         
-        LocalService.buscarLocais = listarLocais;
+        var LocalService = {};
+
+        LocalService.buscarLocais = buscarLocais;
 
         function buscarLocais() {
             
@@ -23,34 +25,48 @@
 
         LocalService.cadastrarLocal = cadastrarLocal;
 
-        function cadastrarLocal(local) {
+        function cadastrarLocal(local, userToken) {
             
             var params = {
-                local : {
-                    nome : local.nome,
-                    descricao : local.descricao
-                }
+                local : local
             };
 
-            return $http.post(PRIVATE_LOCAL, params);
+            var req = {
+                method : "POST",
+                url : PRIVATE_LOCAL,
+                headers : {
+                    "X-Auth" : userToken
+                },
+                data : params
+            };
+            
+            return $http(req);
 
         }
 
         LocalService.removerLocal = removerLocal;
 
-        function removerLocal(idLocal) {
+        function removerLocal(idLocal, userToken) {
 
             var params = {
                 idLocal : idLocal
             };
 
-            return $http.delete(PRIVATE_LOCAL, params);
+            var req = {
+                method : "DELETE",
+                url : PRIVATE_LOCAL,
+                headers : {
+                    "X-Auth" : userToken
+                },
+                data : params
+            };
+            return $http(req);
 
         }
         
-        LocalService.atualizarLocal = atualizarLocal;
+        LocalService.editarLocal = editarLocal;
 
-        function atualizarLocal(local) {
+        function editarLocal(local, userToken) {
             
             var params = {
                 local : {
@@ -60,7 +76,15 @@
                 }
             };
 
-            return $http.put(PRIVATE_LOCAL, params);
+            var req = {
+                method : "PUT",
+                url : PRIVATE_LOCAL,
+                headers : {
+                    "X-Auth" : userToken
+                },
+                data : params
+            };
+            return $http(req);
 
         }
 

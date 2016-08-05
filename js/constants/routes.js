@@ -9,6 +9,7 @@
     var routes =
       {
           BUSCA_ATIVIDADES: "/api/public/atividade/busca",
+          BUSCA_ATIVIDADES_PRIVADA: "/api/private/atividade/busca",
           PRIVATE_ATIVIDADE: "/api/private/atividade",
           LOGIN: "/api/public/usuario/login",
           BUSCA_LOCAIS: "/api/public/local/busca",

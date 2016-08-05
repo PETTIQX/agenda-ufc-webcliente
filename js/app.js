@@ -22,15 +22,14 @@
   require('./services/app-toolkit');
   require('./services/access-service');
   require('./services/atividade-service');
+  require('./services/login-service');
   require('./services/local-service');
-  require('./services/login-service')
 
   require('./controllers/app-controller');
   require('./controllers/main-app-controller');
   require('./controllers/atividade-controller');
-  require('./controllers/local-controller');
   require('./controllers/login-controller');
-  
+  require('./controllers/local-controller');
 
   //require controllers, services etc.
 
@@ -114,6 +113,30 @@
         url: "/login",
         templateUrl: "templates/login.html",
         controller: "LoginController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("atividades-minhas", {
+        url: "/minhas-atividades/:userToken",
+        templateUrl: "templates/private/minhas-atividades.html",
+        controller: "AtividadeController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("cadastro-local", {
+        url: "/cadastro-local",
+        templateUrl: "templates/private/cadastro-local.html",
+        controller: "LocalController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("cadastro-atividade", {
+        url: "/cadastro-atividade",
+        templateUrl: "templates/private/cadastro-atividade.html",
+        controller: "AtividadeController",
         resolve: {
           access: ["Access", function (Access) { return Access.isPublic(); }]
         }

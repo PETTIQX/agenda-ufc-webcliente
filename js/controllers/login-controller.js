@@ -15,8 +15,10 @@
                         if(response.data.token){
                             localStorage.token = response.data.token;
                             $rootScope.user = jwtHelper.decodeToken(response.data.token);
+                            $rootScope.token = response.data.token;
                             $rootScope.auth = true;
                             localStorage.user = $rootScope.user;
+                            console.log($rootScope);
                         }
 
                         //mudar para página inicial
