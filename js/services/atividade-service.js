@@ -11,13 +11,13 @@
         var AtividadeService = {};
         //AtividadeService.getPropostas = getPropostas;
         AtividadeService.buscaEventos = buscaEventos;
-        
+
         function buscaEventos() {
-            
+
             var params = {
                 query:{}
-            };  
-            
+            };
+
             return $http.post(BUSCA_EVENTOS, params);
         }
 
@@ -31,7 +31,14 @@
             };
             return $http.post(BUSCA_EVENTOS, params);
         }
-        
+
+        AtividadeService.buscaEventoDeHoje = buscaEventoDeHoje;
+
+        function buscaEventoDeHoje()
+        {
+          // TODO Ainda não foi implementada no webservice
+        }
+
         return AtividadeService;
     }
 
