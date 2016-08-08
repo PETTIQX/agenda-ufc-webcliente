@@ -11,24 +11,26 @@
   var directives = angular.module("starter.directives", []);
   var factories = angular.module("starter.factories", []);
   var services = angular.module("starter.services", []);
-  
+
 
   require('./constants/config');
   require('./constants/routes');
 
   require('./directives/menu-directive');
   require('./directives/footer-directive');
-  
+
   require('./services/app-toolkit');
   require('./services/access-service');
   require('./services/atividade-service');
-  require('./services/login-service')
+  require('./services/login-service');
+  require('./services/cadastro-service');
 
   require('./controllers/app-controller');
   require('./controllers/main-app-controller');
   require('./controllers/atividade-controller');
   require('./controllers/login-controller');
-  
+  require('./controllers/cadastro-controller');
+
 
   //require controllers, services etc.
 
@@ -109,6 +111,14 @@
         url: "/login",
         templateUrl: "templates/login.html",
         controller: "LoginController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("cadastro", {
+        url: "/cadastro",
+        templateUrl: "templates/cadastro.html",
+        controller: "CadastroController",
         resolve: {
           access: ["Access", function (Access) { return Access.isPublic(); }]
         }
