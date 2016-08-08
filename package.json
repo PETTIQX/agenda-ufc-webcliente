@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PETTIQX/agenda-ufc-webcliente.git"
@@ -16,6 +15,8 @@
   },
   "dependencies": {
     "angular-md5": "^0.1.10",
+    "angular-resource": "^1.5.8",
+    "angular-route": "^1.5.8",
     "bower": "^1.7.9",
     "chalk": "^1.1.3",
     "gulp": "^3.5.6",
