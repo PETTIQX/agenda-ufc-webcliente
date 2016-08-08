@@ -27,17 +27,15 @@
 
         function cadastrarLocal(local, userToken) {
             
-            var params = {
-                local : local
-            };
-
             var req = {
                 method : "POST",
                 url : PRIVATE_LOCAL,
                 headers : {
                     "X-Auth" : userToken
                 },
-                data : params
+                data : {
+                    local : local
+                }
             };
             
             return $http(req);

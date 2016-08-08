@@ -38,12 +38,14 @@
 
         function buscarAtividadePorUsuario(userToken){
             var req = {
-                method : "GET",
+                method : "POST",
                 url : BUSCA_ATIVIDADES_PRIVADA,
                 headers : {
                     "X-Auth" : userToken
                 },
-                data : {}
+                data : {
+                    query : {}
+                }
             };
             return $http(req);
         }

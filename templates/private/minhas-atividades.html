@@ -16,8 +16,13 @@
         </div>
 
     </div>
-
-    <a class="btn-floating btn-large waves-effect waves-light blue" ui-sref="cadastro-atividade({userToken : token})"><i class="material-icons">add</i></a>  
-    
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a ng-show="atividades.length" class="btn-floating btn-large waves-effect waves-light blue" ui-sref="cadastro-atividade({cadastrarAtividade : 'cadastrarAtividade'})"><i class="material-icons">add</i></a>  
+    </div>
   </div>
+
+  <div ng-show="!atividades.length" class="center-align">
+    <a class="waves-effect waves-light btn-large blue" ui-sref="cadastro-atividade({cadastrarAtividade : 'cadastrarAtividade'})"><i class="material-icons left">add</i>Nova Atividade</a>
+  </div>
+
 </div>

@@ -8,7 +8,7 @@
 
    	$scope.init	 = function(){
 
-   		$scope.atividades = [];      	
+   		$scope.atividades = []; 
 
    		AtividadeService.buscarAtividades().then(
 	   		function(response){

@@ -18,7 +18,7 @@
 
   require('./directives/menu-directive');
   require('./directives/footer-directive');
-  
+
   require('./services/app-toolkit');
   require('./services/access-service');
   require('./services/atividade-service');
@@ -118,7 +118,7 @@
         }
       })
       .state("atividades-minhas", {
-        url: "/minhas-atividades/:userToken",
+        url: "/minhas-atividades/:minhasAtividades",
         templateUrl: "templates/private/minhas-atividades.html",
         controller: "AtividadeController",
         resolve: {
@@ -134,7 +134,7 @@
         }
       })
       .state("cadastro-atividade", {
-        url: "/cadastro-atividade",
+        url: "/cadastro-atividade/:cadastrarAtividade",
         templateUrl: "templates/private/cadastro-atividade.html",
         controller: "AtividadeController",
         resolve: {

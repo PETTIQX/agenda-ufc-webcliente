@@ -9,7 +9,7 @@
 
         $rootScope.user = undefined;
         $rootScope.auth = undefined;
-        
+
         $scope.logout = function(){
             $rootScope.user = undefined;
             $rootScope.auth = undefined;

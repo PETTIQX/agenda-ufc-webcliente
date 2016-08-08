@@ -12,10 +12,10 @@
         
         LocalService.cadastrarLocal(local, $rootScope.token).then(
           function(response){
-            console.log(response.data);
+            alert("Cadastro realizado com sucesso!");
           },
           function(error){
-            console.log(error.data);
+            alert("Erro ao cadastrar");
           }
         )
 

@@ -7,7 +7,6 @@
     function LoginController($scope, $rootScope, $stateParams, $state, LoginService, jwtHelper) {
         
         $scope.init = function(){
-            
             $scope.login = function(usuario, senha){
                 LoginService.login(usuario, senha).then(
                     function(response){
