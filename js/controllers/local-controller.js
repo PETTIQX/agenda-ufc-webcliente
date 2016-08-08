@@ -12,6 +12,7 @@
         
         LocalService.cadastrarLocal(local, $rootScope.token).then(
           function(response){
+            console.log("local", local);
             console.log(response.data);
           },
           function(error){
