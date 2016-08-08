@@ -12,7 +12,8 @@
         
         LocalService.cadastrarLocal(local, $rootScope.token).then(
           function(response){
-            alert("Cadastro realizado com sucesso!");
+            console.log("local", local);
+            console.log(response.data);
           },
           function(error){
             alert("Erro ao cadastrar");
