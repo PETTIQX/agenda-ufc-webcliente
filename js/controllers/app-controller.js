@@ -24,5 +24,5 @@
 
   AppController.$inject = ["$scope","$rootScope", "AtividadeService"];
 
-  module.exports = controllers.controller("AppController", ['$scope','$http','xauth',AppController]);
+  module.exports = controllers.controller("AppController", ['$scope','$http','AtividadeService',AppController]);
 })();
