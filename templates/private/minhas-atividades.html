@@ -4,14 +4,19 @@
             <div class="card small">
                 <div class="card-image">
                     <img src="http://blog.sympla.com.br/wp-content/uploads/2013/07/iStock_000012681389Small-800x532.jpg">
-                    <span class="card-title">{{atividade.nome}} - {{atividade.categoria}}</span>
                 </div>
             <div class="card-content">
-                <p>{{atividade.descricao}}</p>
+                <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i>{{atividade.nome}}</span>
             </div>
             <div class="card-action">
                 <a ui-sref="atividade-detalhes({atividadeId: atividade._id})">Detalhes</a>
-                <a ui-sref="editar-atividade({atividadeId : atividade._id})">Editar</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <div class="row">
+                    <div class="col s12"><p><a class="waves-effect waves-light btn-large yellow" ui-sref="editar-atividade({atividadeId : atividade._id})">Editar</a></p></div>
+                    <div class="col s12"><p><button ng-click="removerAtividade(atividade._id)" class="waves-effect waves-light btn-large red">Deletar</button></p></div>
+                </div>
             </div>
         </div>
 

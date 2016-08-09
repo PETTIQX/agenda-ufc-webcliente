@@ -8,6 +8,21 @@
 
    	$scope.init	 = function(){
       
+       $scope.removerAtividade = function(atividadeId){
+         
+         AtividadeService.removerAtividade(atividadeId, $rootScope.token).then(
+           function(response){
+             alert("Atividade Removida");
+             console.log(response.data);
+           },
+           function(erro){
+             alert("Erro ao remover");
+             console.log(erro.data);
+           }
+         )
+
+       }
+
       if($stateParams.atividadeId){
         $scope.atividade = {_id:$stateParams.atividadeId};
 

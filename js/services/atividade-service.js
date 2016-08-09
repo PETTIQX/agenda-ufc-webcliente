@@ -83,18 +83,17 @@
 
         function removerAtividade(idAtividade, userToken) {
 
-            var params = {
-                idAtividade : idAtividade
-            };
-
             var req = {
                 method : "DELETE",
                 url : PRIVATE_ATIVIDADE,
                 headers : {
                     "X-Auth" : userToken
                 },
-                data : params
+                data : {
+                    idAtividade : idAtividade
+                }
             };
+            
             return $http(req);
 
         }
