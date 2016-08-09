@@ -11,13 +11,15 @@
         <li><a ui-sref="#">Hoje</a></li>
         <li><a ui-sref="#">Semana</a></li>
         <li><a ui-sref="#">Mês</a></li>
-        <li><a ui-sref="login" class="waves-effect waves-light btn">Login</a></li>
+        <li ng-if=" !$root.usuario " ><a ui-sref="login" class="waves-effect waves-light btn">Login</a></li>
+        <li ng-if=" $root.usuario " ><a ng-click="logout()" class="waves-effect waves-light btn">Logout</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a ui-sref="#">Hoje</a></li>
         <li><a ui-sref="#">Semana</a></li>
         <li><a ui-sref="#">Mês</a></li>
-        <li><a ui-sref="login" class="waves-effect waves-light btn">Login</a></li>
+        <li ng-if=" !$root.usuario " ><a ui-sref="login" class="waves-effect waves-light btn">Login</a></li>
+        <li ng-if=" $root.usuario " ><a ng-click="logout()" class="waves-effect waves-light btn">Logout</a></li>
       </ul>
     </div>
   </nav>

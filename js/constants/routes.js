@@ -10,6 +10,7 @@
       {
           BUSCA_EVENTOS: "/api/public/atividade/busca",
           LOGIN: "/api/public/usuario/login",
+          CADASTRO: "/api/public/usuario"
       };
     return routes;
   }

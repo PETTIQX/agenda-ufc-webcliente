@@ -1,0 +1,42 @@
+<div class="container" ng-init="init()">
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Usuário" id="usuario" type="text" class="validate" ng-model="usuario">
+          <label for="usuario">Usuário</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="email" type="text" class="validate" ng-model="email">
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="telefone" type="text" class="validate" ng-model="telefone">
+          <label for="telefone">Telefone</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="nome" type="text" class="validate" ng-model="nome">
+          <label for="nome">Nome</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" ng-model="senha">
+          <label for="password">Senha</label>
+        </div>
+        <div class="input-field col s12">
+          <!-- FIXME confirmação não tá funcionando -->
+          <p ng-if="confirma.length > 0 && $parent.senha != confirma" class="error">As senhas não conferem</p>
+          <input id="password-confirm" type="password" class="validate" ng-model="confirma">
+          <label for="password-confirm">Confirme a Senha</label>
+        </div>
+        <div class="input-field col s2">
+          <a class="waves-effect waves-light btn orange" ui-sref="/"  >Cancelar</a>
+        </div>
+        <div class="input-field col s2">
+          <button class="waves-effect waves-light btn blue" ng-click="cadastro(nome,usuario,email,telefone,senha,0,true) " >Cadastrar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
