@@ -11,7 +11,7 @@
   var directives = angular.module("starter.directives", []);
   var factories = angular.module("starter.factories", []);
   var services = angular.module("starter.services", []);
-  
+
 
   require('./constants/config');
   require('./constants/routes');
@@ -137,6 +137,14 @@
         url: "/cadastro-atividade/:cadastrarAtividade",
         templateUrl: "templates/private/cadastro-atividade.html",
         controller: "AtividadeController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("cadastro", {
+        url: "/cadastro",
+        templateUrl: "templates/cadastro.html",
+        controller: "CadastroController",
         resolve: {
           access: ["Access", function (Access) { return Access.isPublic(); }]
         }
