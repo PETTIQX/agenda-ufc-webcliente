@@ -13,6 +13,7 @@
         function cadastro(nome,usuario,email,telefone,senha,vinculacao,editor) {
             var params = {
                 usuario:{
+                    nome  : nome,
                     login : usuario,
                     senha : senha,
                     email : email,

@@ -24,12 +24,14 @@
   require('./services/atividade-service');
   require('./services/login-service');
   require('./services/local-service');
+  require('./services/cadastro-service');
 
   require('./controllers/app-controller');
   require('./controllers/main-app-controller');
   require('./controllers/atividade-controller');
   require('./controllers/login-controller');
   require('./controllers/local-controller');
+  require('./controllers/cadastro-controller');
 
   //require controllers, services etc.
 

@@ -13,7 +13,8 @@
           PRIVATE_ATIVIDADE: "/api/private/atividade",
           LOGIN: "/api/public/usuario/login",
           BUSCA_LOCAIS: "/api/public/local/busca",
-          PRIVATE_LOCAL: "/api/private/local"
+          PRIVATE_LOCAL: "/api/private/local",
+          CADASTRO: "/api/public/usuario"
       };
     return routes;
   }
