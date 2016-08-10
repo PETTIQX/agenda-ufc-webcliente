@@ -3,19 +3,19 @@
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="Nome" id="first_name" type="text" class="validate" ng-model="atividade.nome">
-                    <label for="first_name">Nome</label>
+                    <input placeholder="Nome" id="nome" type="text" class="validate" ng-model="atividade.nome">
+                    <label for="nome">Nome</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="Descrição" id="first_name" type="text" class="validate" ng-model="atividade.nome">
-                    <label for="first_name">Descrição</label>
+                    <input placeholder="Descrição" id="descricao" type="text" class="validate" ng-model="atividade.descricao">
+                    <label for="descricao">Descrição</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <select>
+                    <select ng-model="atividade.cartegoria">
                         <option value="" disabled selected>Selecione</option>
                         <option value="Células">Células</option>
                         <option value="Monitoria">Monitoria</option>
@@ -26,26 +26,25 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <select>
+                    <select ng-model="atividade.local">
                         <option value="" disabled selected>Selecione</option>
-                        <div ng-repeat="local in locais">
-                            <option value="local._id">{{local.nome}}</option>
-                        </div>
+                        <option ng-repeat="l in locais" value="{{l._id}}">{{l.nome}}</option>
                     </select>
                     <label>Local</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="Site" id="first_name" type="text" class="validate" ng-model="atividade.site">
-                    <label for="first_name">Site</label>
+                    <input placeholder="Site" id="site" type="text" class="validate" ng-model="atividade.site">
+                    <label for="site">Site</label>
                 </div>
             </div>
             <div class="row">
                 <div class="file-field input-field">
                     <div class="btn blue">
                         <span>Selecionar</span>
-                        <input type="file" multiple>
+                        <!-- TODO criar uma diretiva para mandar a imagem -->
+                        <input type="file" multiple >
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" placeholder="Selecione uma ou mais imagens">
@@ -61,9 +60,3 @@
     </div>
 
 </div>
-
-<script>
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-</script>
