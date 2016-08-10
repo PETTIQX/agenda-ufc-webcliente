@@ -17,7 +17,7 @@
                     },
                     function(error){
                         console.log(error.data);
-                        alert("Deu erro!");
+                        alert("Erro ao efetuar cadastro.");
                     }
                 )
             };
