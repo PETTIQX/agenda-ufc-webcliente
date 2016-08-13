@@ -8,7 +8,7 @@
                     <p>Deseja realmente deletar esta atividade?<br>Após realizada, a deleção não poderá ser desfeita.</p>
                 </div>
                 <div class="modal-footer">
-                    <a ng-click="$('#modal1').closeModal();" class="modal-action modal-close waves-effect waves-orange btn-flat">Cancelar</a>
+                    <a ng-click="$('#deleteModal').closeModal();" class="modal-action modal-close waves-effect waves-orange btn-flat">Cancelar</a>
                     <a ng-click="removerAtividade(atividade._id)" class="modal-action modal-close waves-effect waves-red btn-flat">Deletar</a>
                 </div>
             </div>
@@ -38,7 +38,16 @@
   </div>
 
   <div ng-show="!atividades.length" class="center-align">
-    <h4>Você não possui atividades cadastradas</h4>
+    <div id="semAtividadesModal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Sem atividades cadastradas</h4>
+            <img src="../img/addButomTutorial.png">
+            <p>Clique no + para adicionar atividades</p>
+        </div>
+        <div class="modal-footer">
+            <a ng-click="$('#semAtividadesModal').closeModal();" class="modal-action center modal-close waves-effect waves-green btn-flat">Entendi</a>
+        </div>
+    </div>
   </div>
 
 </div>

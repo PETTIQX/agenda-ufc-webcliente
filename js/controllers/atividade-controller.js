@@ -47,10 +47,8 @@
 
             if(!$scope.atividades.lenght){
               setTimeout(function(){
-                $('.tooltipped').tooltip({position: 'top'});
-                var $toastContent = $('<span>Clique no + para adicionar atividades</span>');
-                Materialize.toast($toastContent, 5000);
-              }); 
+                $('#semAtividadesModal').openModal();
+              });
             }
 
             //RAUL: Hack feio pra carregar os modais
