@@ -4,15 +4,6 @@
 /**
 * Joins the partial files
 */
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column; }
-
-main {
-  flex: 1 0 auto;
-  background: #eff4f6; }
-
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif; }
 
@@ -32,15 +23,6 @@ img.responsive-img {
 .card .card-content {
   padding: 10px;
   text-transform: uppercase; }
-
-footer.page-footer {
-  background-color: #193d58;
-  margin-top: 0px;
-  padding-top: 0px;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  z-index: 2; }
 
 .fixed-action-btn {
   bottom: 25px;
@@ -65,4 +47,22 @@ span.card-title a, .card .card-content .card-title {
   margin-top: 64px; }
 
 .tabs .tab a {
-  color: #FFF; }
+  color: #fff; }
+  .tabs .tab a :hover {
+    color: #fff; }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+main {
+  flex: 1 0 auto; }
+
+footer.page-footer {
+  background-color: #193d58;
+  margin-top: 0px;
+  padding-top: 0px;
+  width: 100%;
+  bottom: 0;
+  z-index: 2; }

@@ -87,7 +87,8 @@
                 method : "DELETE",
                 url : PRIVATE_ATIVIDADE,
                 headers : {
-                    "X-Auth" : userToken
+                    "X-Auth" : userToken,
+                    "Content-Type" : "application/json;charset=utf-8"
                 },
                 data : {
                     idAtividade : idAtividade

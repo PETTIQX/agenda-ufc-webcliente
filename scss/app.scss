@@ -11,5 +11,27 @@
 
 .tabs .tab a
 {
-  color: #FFF;
+  color: #fff;
+  :hover{
+    color: #fff;
+  }
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer.page-footer {
+  background-color: #193d58;
+  margin-top: 0px;
+  padding-top: 0px;
+  width: 100%;
+  bottom: 0;
+  z-index: 2;   
 }

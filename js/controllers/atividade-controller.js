@@ -13,11 +13,10 @@
 
          AtividadeService.removerAtividade(atividadeId, $rootScope.token).then(
            function(response){
-             alert("Atividade Removida");
              console.log(response.data);
+             $state.reload();
            },
            function(erro){
-             alert("Erro ao remover");
              console.log(erro.data);
            }
          )
@@ -45,6 +44,20 @@
           function(response){
             console.log(response.data);
             $scope.atividades = response.data;
+
+            if(!$scope.atividades.lenght){
+              setTimeout(function(){
+                $('.tooltipped').tooltip({position: 'top'});
+                var $toastContent = $('<span>Clique no + para adicionar atividades</span>');
+                Materialize.toast($toastContent, 5000);
+              }); 
+            }
+
+            //RAUL: Hack feio pra carregar os modais
+            setTimeout(function(){
+              $('.modal-trigger').leanModal();
+            });
+
           },
           function(error){
             console.log(error.data);

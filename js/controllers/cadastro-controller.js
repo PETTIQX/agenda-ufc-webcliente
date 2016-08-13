@@ -3,7 +3,7 @@
 
     var controllers = angular.module('starter.controllers');
 
-    function CadastroController($scope, $rootScope, $stateParams, $state,$location, CadastroService) {
+    function CadastroController($scope, $rootScope, $stateParams, $state, $location, CadastroService) {
 
         $scope.init = function(){
 

@@ -1,6 +1,18 @@
 <div class="container" ng-init="init()">
     <div class="row">
         <div ng-repeat="atividade in atividades" class="col s12 m4">
+            <!--Modal para cada atividade-->
+            <div id="deleteModal" class="modal">
+                <div class="modal-content">
+                    <h4>Deletar Atividade</h4>
+                    <p>Deseja realmente deletar esta atividade?<br>Após realizada, a deleção não poderá ser desfeita.</p>
+                </div>
+                <div class="modal-footer">
+                    <a ng-click="$('#modal1').closeModal();" class="modal-action modal-close waves-effect waves-orange btn-flat">Cancelar</a>
+                    <a ng-click="removerAtividade(atividade._id)" class="modal-action modal-close waves-effect waves-red btn-flat">Deletar</a>
+                </div>
+            </div>
+
             <div class="card small">
                 <div class="card-image">
                     <img src="http://blog.sympla.com.br/wp-content/uploads/2013/07/iStock_000012681389Small-800x532.jpg">
@@ -15,19 +27,18 @@
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                 <div class="row">
                     <div class="col s12"><p><a class="waves-effect waves-light btn-large orange" ui-sref="editar-atividade({atividadeId : atividade._id})">Editar</a></p></div>
-                    <div class="col s12"><p><button ng-click="removerAtividade(atividade._id)" class="waves-effect waves-light btn-large red">Deletar</button></p></div>
+                    <div class="col s12"><p><a class="modal-trigger waves-effect waves-light btn-large red" href="#deleteModal">Deletar</a></p></div>
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a ng-show="atividades.length" class="btn-floating btn-large waves-effect waves-light blue" ui-sref="cadastro-atividade({cadastrarAtividade : 'cadastrarAtividade'})"><i class="material-icons">add</i></a>  
+    <div class="fixed-action-btn" style="bottom: 60px; right: 24px;">
+        <a class="btn-floating btn-large waves-effect waves-light blue" ui-sref="cadastro-atividade({cadastrarAtividade : 'cadastrarAtividade'})"><i class="material-icons">add</i></a>  
     </div>
   </div>
 
   <div ng-show="!atividades.length" class="center-align">
-    <a class="waves-effect waves-light btn-large blue" ui-sref="cadastro-atividade({cadastrarAtividade : 'cadastrarAtividade'})"><i class="material-icons left">add</i>Nova Atividade</a>
+    <h4>Você não possui atividades cadastradas</h4>
   </div>
 
 </div>
