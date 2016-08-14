@@ -1,5 +1,15 @@
 <div class="container" ng-init="init()">
     
+    <div id="erroLoginModal" class="modal">
+        <div class="modal-content">
+            <h4>Erro ao efetuar login</h4>
+            <p>Usuário ou senha incorretos.</p>
+        </div>
+        <div class="modal-footer">
+            <a ng-click="$('#erroLoginModal').closeModal();" class="modal-action modal-close waves-effect waves-orange btn-flat">Ok</a>
+        </div>
+    </div>
+
     <div class="row">
         <form class="col s12">
             <div class="row">

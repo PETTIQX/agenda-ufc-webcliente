@@ -25,7 +25,9 @@
                     },
                     function(error){
                         console.log(error.data);
-                        alert("Deu erro!");
+                        $('#erroLoginModal').openModal();
+                        $scope.usuario = "";
+                        $scope.senha = "";
                     }
                 )
             };
