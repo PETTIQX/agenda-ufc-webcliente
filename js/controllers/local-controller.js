@@ -8,12 +8,19 @@
 
    	$scope.init	 = function(){
 
+      $scope.novoCadastro = function(){
+        $("#cadLocalSucessoModal").closeModal();
+        $scope.local.nome = "";
+        $scope.local.descricao = "";
+      }
+
       $scope.cadastrarLocal = function(local){
         
         LocalService.cadastrarLocal(local, $rootScope.token).then(
           function(response){
             console.log("local", local);
             console.log(response.data);
+            $("#cadLocalSucessoModal").openModal();
           },
           function(error){
             alert("Erro ao cadastrar");

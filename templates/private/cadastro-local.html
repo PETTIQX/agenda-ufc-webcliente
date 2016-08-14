@@ -1,11 +1,22 @@
 <div class="container" ng-init="init()">
 
+    <div id="cadLocalSucessoModal" class="modal">
+        <div class="modal-content">
+            <h4>Local adicionado com sucesso</h4>
+            <p>Agora você e outros editores podem criar atividades que ocorrerão neste local.</p>
+        </div>
+        <div class="modal-footer">
+            <a ng-click="novoCadastro();" class="modal-action modal-close waves-effect waves-blue btn-flat">Cadastrar mais locais</a>
+            <a ui-sref="app" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+        </div>
+    </div>
+
     <div class="row">
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s12">
                     <input placeholder="Nome" id="first_name" type="text" class="validate" ng-model="local.nome">
-          <label for="first_name">Nome</label>
+                    <label for="first_name">Nome</label>
                 </div>
             </div>
             <div class="row">
