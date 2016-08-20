@@ -1,36 +1,45 @@
 <div class="container" ng-init="init()">
 
+  <div id="erroCadastroModal" class="modal">
+      <div class="modal-content">
+        <h4>Erro ao realizar cadastro</h4>
+        <p>Verificque se todos os dados foram informados corretamente.</p>
+      </div>
+      <div class="modal-footer">
+        <a ng-click="$('#erroCadastroModal').closeModal();" class="modal-action modal-close waves-effect waves-orange btn-flat">Ok</a>
+      </div>
+  </div>
+
   <div class="row">
-    <form class="col s12">
+    <form class="col s12" name="cadastroForm" novalidate>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Usuário" id="usuario" type="text" class="validate" ng-model="usuario">
+          <input placeholder="Usuário" id="usuario" type="text" class="validate" ng-model="usuario.id" ng-trim="true" required>
           <label for="usuario">Usuário</label>
         </div>
         <div class="input-field col s12">
-          <input id="email" type="text" class="validate" ng-model="email">
-          <label for="email">Email</label>
-        </div>
-        <div class="input-field col s12">
-          <input id="telefone" type="text" class="validate" ng-model="telefone">
-          <label for="telefone">Telefone</label>
-        </div>
-        <div class="input-field col s12">
-          <input id="nome" type="text" class="validate" ng-model="nome">
+          <input id="nome" type="text" name="nome" class="validate" ng-model="usuario.nome" ng-trim="true" required>
           <label for="nome">Nome</label>
         </div>
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate" ng-model="senha">
+          <input id="email" type="email" class="validate" ng-model="usuario.email" ng-trim="true" required>
+          <label data-error="E-mail inválido" for="email">Email</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="telefone" type="tel" class="validate" ng-model="usuario.telefone" ng-trim="true" required>
+          <label data-error="Telefone inválido" for="telefone">Telefone</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" ng-model="usuario.senha" ng-trim="false" required>
           <label for="password">Senha</label>
         </div>
         <div class="input-field col s12">
-          <!-- FIXME confirmação não tá funcionando -->
-          <p ng-if="confirma.length > 0" class="error">As senhas não conferem</p>
-          <input id="password-confirm" type="password" class="validate" ng-model="confirma">
+          <p ng-if="confirma != usuario.senha && cadastroForm.confirma.$dirty" class="error">As senhas não conferem</p>
+          <input id="password-confirm" name="confirma" type="password" class="validate" ng-model="confirma" ng-trim="false" required>
           <label for="password-confirm">Confirme a Senha</label>
         </div>
         <div class="input-field col s12">
-          <button class="waves-effect waves-light btn blue" ng-click="cadastro(nome,usuario,email,telefone,senha,0,false) " >Cadastrar</button>
+          <button class="waves-effect waves-light btn blue" ng-click="cadastro(usuario, 0, false)" ng-disabled="cadastroForm.$invalid || confirma != usuario.senha">Cadastrar</button>
         </div>
         <div class="input-field col s12">
           <a class="waves-effect waves-light btn orange" ui-sref="app">Cancelar</a>

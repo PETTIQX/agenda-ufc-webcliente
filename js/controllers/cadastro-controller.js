@@ -7,17 +7,16 @@
 
         $scope.init = function(){
 
-            $scope.cadastro = function(nome,usuario,email,telefone,senha,vinculacao,editor){
-                CadastroService.cadastro(nome,usuario,email,telefone,senha,vinculacao,editor).then(
+            $scope.cadastro = function(usuario, vinculacao, editor){
+                CadastroService.cadastro(usuario.nome, usuario.id, usuario.email, usuario.telefone, usuario.senha, vinculacao, editor).then(
                     function(response){
                         console.log(response.data);
                         $location.path("/login");
                         $location.replace();
-                        alert("Usuário cadastrado");
                     },
                     function(error){
                         console.log(error.data);
-                        alert("Erro ao efetuar cadastro.");
+                        $('#erroCadastroModal').openModal();
                     }
                 )
             };
