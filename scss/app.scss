@@ -7,15 +7,6 @@
 /**
 * Joins the partial files
 */
-@import 'style';
-
-.tabs .tab a
-{
-  color: #fff;
-  :hover{
-    color: #fff;
-  }
-}
 
 body {
   display: flex;
@@ -28,7 +19,6 @@ main {
 }
 
 footer.page-footer {
-  background-color: #193d58;
   margin-top: 0px;
   padding-top: 0px;
   width: 100%;

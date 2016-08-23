@@ -4,53 +4,6 @@
 /**
 * Joins the partial files
 */
-html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif; }
-
-.mtop {
-  margin-top: 100px; }
-
-a {
-  color: #ffab40; }
-
-.margimTopForm {
-  margin-top: 100px; }
-
-img.responsive-img {
-  height: 240px;
-  width: 320px; }
-
-.card .card-content {
-  padding: 10px;
-  text-transform: uppercase; }
-
-.fixed-action-btn {
-  bottom: 25px;
-  right: 24px; }
-
-nav {
-  background: #193d58;
-  position: fixed;
-  z-index: 4; }
-
-.card .card-content p, ul li {
-  color: rgba(0, 0, 0, 0.5); }
-
-span.card-title a, .card .card-content .card-title {
-  color: #133044;
-  font-weight: 400; }
-
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
-  color: #133044; }
-
-.main-com-menu {
-  margin-top: 64px; }
-
-.tabs .tab a {
-  color: #fff; }
-  .tabs .tab a :hover {
-    color: #fff; }
-
 body {
   display: flex;
   min-height: 100vh;
@@ -60,7 +13,6 @@ main {
   flex: 1 0 auto; }
 
 footer.page-footer {
-  background-color: #193d58;
   margin-top: 0px;
   padding-top: 0px;
   width: 100%;
