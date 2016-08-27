@@ -39,17 +39,39 @@
                     <label for="site">Site</label>
                 </div>
             </div>
-            <div class="row">
-                <div class="file-field input-field">
-                    <div class="btn blue">
-                        <i class="material-icons">collections</i>
-                        <!-- TODO criar uma diretiva para mandar a imagem -->
-                        <input type="file" multiple >
+            <!-- FIXME: Ainda não faz uploads. Precisa dos parametros de flow-init antes -->
+            <div class="row" flow-init >
+                <!-- <div class="file-field input-field"> -->
+                    <button type="button" class="btn blue input-field file-field">
+                      Enviar Imagens
+                        <i class="material-icons left">collections</i>
+                        <input type="file"  flow-btn>
+                    </button>
+                    <!-- <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Selecione uma ou mais imagens" flow-btn flow-directory>
+                    </div> -->
+                <!-- </div> -->
+                <div class="row">
+                  <div class="col s3" ng-repeat="file in $flow.files">
+                    <div class="card" >
+                      <div class="card-image">
+                        <!-- FIXME: JORDY: O tamanho da imagem aqui é setado hardcoded.
+                            Eu quem fiz e o resultado é satisfatório, mas não gostei do método  -->
+                        <img height="280" flow-img="file" alt="" />
+                      </div>
+                      <div class="card-content">
+                        <p>
+                          <span class="truncate">{{file.name}}</span><br>
+                          Tamanho: <span>{{file.size/1024 | number: 0 }} KB</span>
+                        </p>
+                      </div>
+                      <div class="card-action">
+                        <a class="waves-effect waves-light btn red" ng-click="file.cancel()">Remover</a>
+                      </div>
                     </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Selecione uma ou mais imagens">
-                    </div>
+                  </div>
                 </div>
+
             </div>
             <div class="row">
                 <div class="input-field col s12">
