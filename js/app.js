@@ -39,7 +39,7 @@
     /**
     * Libraries modules dependencies
     */
-    "ui.router","ui.materialize","ngMap","angular-jwt",
+    "ui.router","ui.materialize","ngMap","angular-jwt","flow",
 
     /**
     * Our modules  dependencies

@@ -28,6 +28,7 @@
     "Materialize": "materialize#^0.97.6",
     "ngmap": "^1.17.3",
     "angular-materialize": "^0.1.9",
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "ng-flow": "^2.7.4"
   }
 }
