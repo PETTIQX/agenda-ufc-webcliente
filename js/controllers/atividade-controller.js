@@ -90,6 +90,13 @@
               $('select').material_select();
             },200);
 
+            $('.chips').material_chip();
+            $('.chips-initial').material_chip();
+            $('.chips-placeholder').material_chip({
+              placeholder: 'Digite uma tag',
+              secondaryPlaceholder: '+Tag',
+            });
+
           },
           function(error){
             console.log(error.data);
