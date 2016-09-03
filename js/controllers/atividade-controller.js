@@ -9,6 +9,11 @@
 
    	$scope.init	 = function(){
 
+       $scope.cardSelecionado = function(selecionado){
+         console.log(selecionado);
+        //  return selecionado ? 'card blue' : 'card';
+       }
+
        $scope.removerAtividade = function(atividadeId){
 
          AtividadeService.removerAtividade(atividadeId, $rootScope.token).then(
@@ -68,13 +73,14 @@
 
       function cadastrarAtividade(atividade){
         console.log(atividade);
-        AtividadeService.cadastrarAtividade(atividade).then(
+        AtividadeService.cadastrarAtividade(atividade,$rootScope.token).then(
           function(response){
               console.log(response.data);
               alert('Atividade Cadastrada');
           },
           function(error){
             alert("Erro: " + error.data);
+            console.log(error)
           });
       };
 

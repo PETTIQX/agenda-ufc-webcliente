@@ -13,13 +13,13 @@
         var AtividadeService = {};
         //AtividadeService.getPropostas = getPropostas;
         AtividadeService.buscarAtividades = buscarAtividades;
-        
+
         function buscarAtividades() {
-            
+
             var params = {
                 query:{}
-            };  
-            
+            };
+
             return $http.post(BUSCA_ATIVIDADES, params);
         }
 
@@ -33,7 +33,7 @@
             };
             return $http.post(BUSCA_ATIVIDADES, params);
         }
-        
+
         AtividadeService.buscarAtividadePorUsuario = buscarAtividadePorUsuario;
 
         function buscarAtividadePorUsuario(userToken){
@@ -59,13 +59,15 @@
                     nome: atividade.nome,
                     descricao : atividade.descricao,
                     categoria : atividade.categoria,
-                    horarios : atividade.horarios,
+                    horarios : [],
                     local : atividade.local,
-                    tags : atividade.tags,
+                    tags : [],
                     site : atividade.site,
-                    imagens : atividade.imagens
+                    imagens : []
                 }
             };
+
+            console.log(params);
 
             var req = {
                 method : "POST",
@@ -94,7 +96,7 @@
                     idAtividade : idAtividade
                 }
             };
-            
+
             return $http(req);
 
         }
