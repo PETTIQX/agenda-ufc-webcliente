@@ -1,11 +1,11 @@
 <div class="container" ng-init="init()">
 
     <h2>{{atividade.nome}}</h2>
-    
+
 
     <div class="slider" ng-if="atividade.imagens.lenght > 0">
         <ul class="slides">
-            <div ng-repeat="imagem in atividade.imagens"> 
+            <div ng-repeat="imagem in atividade.imagens">
                 <li>
                     <img ng-src="{{imagem}}">
                     <div class="caption center-align">
@@ -18,6 +18,12 @@
     </div>
     <p><b>Categoria: </b>{{atividade.categoria}}</p>
     <p><b>Local: </b>{{atividade.local.nome}} - {{atividade.local.descricao}}</p>
+    <p><b>Tags: </b></p>
+    <div >
+        <div class="chip" ng-repeat="tag in atividade.tags">
+          {{tag}}
+        </div>
+    </div>
     <p ng-if="atividade.horarios.length > 0">
         <b>Horários: </b>
         <div ng-repeat="horario in atividade.horarios">
