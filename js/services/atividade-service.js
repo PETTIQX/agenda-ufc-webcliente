@@ -4,7 +4,7 @@
 
     var services = angular.module("starter.services");
 
-    function AtividadeService($http, $q, config, routes, AppTollkit) {
+    function AtividadeService($http, $q, config, routes, $location, AppTollkit) {
 
         var BUSCA_ATIVIDADES = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES);
         var BUSCA_ATIVIDADES_PRIVADA = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES_PRIVADA);
@@ -61,7 +61,7 @@
                     categoria : atividade.categoria,
                     horarios : [],
                     local : atividade.local,
-                    tags : [],
+                    tags : atividade.tags,
                     site : atividade.site,
                     imagens : []
                 }
@@ -131,13 +131,15 @@
 
         }
 
+        
+
 
         return AtividadeService;
     }
 
     module.exports = services.service("AtividadeService", AtividadeService);
 
-    AtividadeService.$inject = ["$http", "$q", "config", "routes", "AppTollkit"];
+    AtividadeService.$inject = ["$http", "$q", "config", "routes","$location", "AppTollkit"];
 
 
 })();

@@ -14,7 +14,8 @@
           LOGIN: "/api/public/usuario/login",
           BUSCA_LOCAIS: "/api/public/local/busca",
           PRIVATE_LOCAL: "/api/private/local",
-          CADASTRO: "/api/public/usuario"
+          CADASTRO: "/api/public/usuario",
+          UPLOAD_IMAGEM: "/api/private/atividade/image"
       };
     return routes;
   }

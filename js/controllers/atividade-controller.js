@@ -4,7 +4,7 @@
 
   var controllers = angular.module('starter.controllers');
 
-  function AtividadeController($scope, $rootScope, $stateParams, $state, AtividadeService, LocalService) {
+  function AtividadeController($scope, $rootScope, $stateParams, $state, $location, AtividadeService, LocalService) {
 
 
    	$scope.init	 = function(){
@@ -13,6 +13,8 @@
          console.log(selecionado);
         //  return selecionado ? 'card blue' : 'card';
        }
+
+      
 
        $scope.removerAtividade = function(atividadeId){
 
@@ -73,10 +75,16 @@
 
       function cadastrarAtividade(atividade){
         console.log(atividade);
+        var splitTags = atividade.tags.split(" ");
+        atividade.tags = splitTags;
+
         AtividadeService.cadastrarAtividade(atividade,$rootScope.token).then(
           function(response){
               console.log(response.data);
               alert('Atividade Cadastrada');
+              var idAtividade = response.data._id;
+              $location.path("/cadastro-imagem-atividade/" + idAtividade);
+
           },
           function(error){
             alert("Erro: " + error.data);
@@ -123,7 +131,7 @@
 
   }
 
-  AtividadeController.$inject = ["$scope","$rootScope", "$stateParams", "$state", "AtividadeService", "LocalService"];
+  AtividadeController.$inject = ["$scope","$rootScope", "$stateParams", "$state", "$location", "AtividadeService", "LocalService"];
 
   module.exports = controllers.controller("AtividadeController", AtividadeController);
 })();

@@ -143,6 +143,22 @@
           access: ["Access", function (Access) { return Access.isPublic(); }]
         }
       })
+      .state("cadastro-imagem-atividade", {
+        url: "/cadastro-imagem-atividade/:atividadeId",
+        templateUrl: "templates/private/cadastro-atividade-escolhe-imagens.html",
+        controller: "AtividadeController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("upload-imagem-atividade", {
+        url: "/upload-imagem-atividade",
+        templateUrl: "templates/private/cadastro-atividade-escolhe-imagens.html",
+        controller: "AtividadeController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
       .state("cadastro", {
         url: "/cadastro",
         templateUrl: "templates/cadastro.html",
@@ -169,6 +185,13 @@
             return $sce.trustAsResourceUrl(recordingUrl);
         };
     }]);
+
+  app.config(['flowFactoryProvider', function (flowFactoryProvider,routes,config) {
+    flowFactoryProvider.defaults = {
+        target: '/api/private/atividade/image'
+    };
+
+}]);
 
   module.exports = app;
 
