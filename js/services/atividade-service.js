@@ -9,9 +9,9 @@
         var BUSCA_ATIVIDADES = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES);
         var BUSCA_ATIVIDADES_PRIVADA = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES_PRIVADA);
         var PRIVATE_ATIVIDADE = AppTollkit.serviceAddress(routes.PRIVATE_ATIVIDADE);
+        var UPLOAD_IMAGEM = AppTollkit.serviceAddress(routes.UPLOAD_IMAGEM);
 
         var AtividadeService = {};
-        //AtividadeService.getPropostas = getPropostas;
         AtividadeService.buscarAtividades = buscarAtividades;
 
         function buscarAtividades() {
@@ -131,8 +131,22 @@
 
         }
 
-        
+        function adicionarImagems(atividade, userToken, files){
+            var params = {
+                file : files,
+                idAtividade : atividade._id
+            };
 
+            var req = {
+                method : "POST",
+                url : UPLOAD_IMAGEM,
+                headers : {
+                    "X-Auth" : userToken
+                },
+                data : params 
+            };
+            return $http(req);
+        }
 
         return AtividadeService;
     }

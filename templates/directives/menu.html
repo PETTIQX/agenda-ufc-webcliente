@@ -1,16 +1,27 @@
+<ul class="side-nav fixed blue" id="mobile-demo">
+  <li class="center"><img class="logo-icon" src="../img/icone.png"></li>
+  <nav style="padding-left:0px;">
+    <div class="nav-wrapper blue darken-4">
+      <form>
+        <div class="input-field">
+          <input id="search" ng-model="nomeAtividade" ng-change="buscarAtividadesPorNome(nomeAtividade)" type="search" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+  <li><a ng-show="!auth" ui-sref="login" class="waves-effect waves-light btn blue darken-4 white-text">Login</a></li>
+  <li><a ng-show="auth" ng-click="logout()" class="waves-effect waves-light btn blue darken-4 white-text">Logout</a></li>
+</ul>
+
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper blue darken-4">
       <a href="#" class="brand-logo center">Agenda UFC</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a ng-show="!auth" ui-sref="login" class="waves-effect waves-light btn blue">Login</a></li>
-        <li><a ng-show="auth" ng-click="logout()" class="waves-effect waves-light btn blue">Logout</a></li>
       </ul>
     </div>
-    <ul class="side-nav" id="mobile-demo">
-      <li><a ng-show="!auth" ui-sref="login" class="waves-effect waves-light btn blue">Login</a></li>
-      <li><a ng-show="auth" ng-click="logout()" class="waves-effect waves-light btn blue">Logout</a></li>
-    </ul>
   </nav>
 </div>

@@ -14,7 +14,22 @@
         //  return selecionado ? 'card blue' : 'card';
        }
 
-      
+      $scope.buscarAtividadesPorNome = function(atividadeNome){
+        AtividadeService.buscarAtividades().then(
+          function(response){
+            for(var atividade in response.data){
+              if(atividade.nome === atividadeNome){
+                alert("Tem um igual...");
+                return;
+              }    
+            }
+            alert("Não encontrado...");      
+          },
+          function(erro){
+
+          }
+        );
+      }
 
        $scope.removerAtividade = function(atividadeId){
 
@@ -55,13 +70,9 @@
             if(!$scope.atividades.lenght){
               setTimeout(function(){
                 $('#semAtividadesModal').openModal();
+                $('.modal-trigger').leanModal();
               });
             }
-
-            //RAUL: Hack feio pra carregar os modais
-            setTimeout(function(){
-              $('.modal-trigger').leanModal();
-            });
 
           },
           function(error){
