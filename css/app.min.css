@@ -1,1 +1,1 @@
-body{display:flex;min-height:100vh;flex-direction:column}main{flex:1 0 auto}footer.page-footer{margin-top:0;padding-top:0;width:100%;bottom:0;z-index:2}
+body{display:flex;min-height:100vh;flex-direction:column}footer,head,main,nav{padding-left:300px}@media only screen and (max-width:992px){footer,head,main,nav{padding-left:0}}main{flex:1 0 auto}.logo-icon{padding-top:10px}footer.page-footer{margin-top:0;padding-top:0;width:100%;bottom:0;z-index:2}

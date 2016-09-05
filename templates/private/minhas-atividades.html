@@ -1,4 +1,4 @@
-<div class="container" ng-init="init()">
+<div ng-init="init()">
     <div class="row">
         <div ng-repeat="atividade in atividades" class="col s12 m4">
             <!--Modal para cada atividade-->
@@ -21,7 +21,7 @@
                 <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i>{{atividade.nome}}</span>
             </div>
             <div class="card-action">
-                <a ui-sref="atividade-detalhes({atividadeId: atividade._id})">Detalhes</a>
+                <a ui-sref="atividade-detalhes({atividadeId: atividade._id})" class="blue-text">Detalhes</a>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>

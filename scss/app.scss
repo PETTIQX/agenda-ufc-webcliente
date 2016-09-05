@@ -14,8 +14,19 @@ body {
   flex-direction: column;
 }
 
+head, main, nav, footer{
+  padding-left: 300px;
+  @media only screen and (max-width: 992px){
+    padding-left: 0px;
+  }
+}
+
 main {
   flex: 1 0 auto;
+}
+
+.logo-icon{
+  padding-top: 10px;
 }
 
 footer.page-footer {

@@ -9,8 +9,17 @@ body {
   min-height: 100vh;
   flex-direction: column; }
 
+head, main, nav, footer {
+  padding-left: 300px; }
+  @media only screen and (max-width: 992px) {
+    head, main, nav, footer {
+      padding-left: 0px; } }
+
 main {
   flex: 1 0 auto; }
+
+.logo-icon {
+  padding-top: 10px; }
 
 footer.page-footer {
   margin-top: 0px;
