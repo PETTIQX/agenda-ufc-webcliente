@@ -3,17 +3,21 @@
     <h2>{{atividade.nome}}</h2>
 
 
-    <div class="slider" ng-if="atividade.imagens.lenght > 0">
+    <div class="slider" ng-if="atividade.imagens.length > 0">
         <ul class="slides">
             <div ng-repeat="imagem in atividade.imagens">
                 <li>
-                    <img ng-src="{{imagem}}">
+                  <!-- BUG: A imagem carrega normal, mas parece que o slider
+                não funciona. Até o exemplo do materialize fica com o mesmo fundo cinza
+              daqui. -->
+                    <img ng-src="{{imageAddress + imagem}}" alt=""/>
                     <div class="caption center-align">
+                      <h3>{{$index}}</h3>
                     </div>
                 </li>
             </div>
         </ul>
-    </div>
+    </div> -
     <p><b>Descrição: </b>{{atividade.descricao}}</p>
     <p><b>Categoria: </b>{{atividade.categoria}}</p>
     <p><b>Local: </b>{{atividade.local.nome}} - {{atividade.local.descricao}}</p>

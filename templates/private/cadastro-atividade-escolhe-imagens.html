@@ -1,7 +1,13 @@
 <div class="container" ng-init="init()">    <!-- FIXME: Ainda não faz uploads. Precisa dos parametros de flow-init antes -->
   <form>
-    <div class="row" flow-init="{ target: 'http://ec2-52-38-136-232.us-west-2.compute.amazonaws.com:4000/api/private/atividade/image',
-      query:{ idAtividade: atividade._id } }" flow-files-submitted="$flow.upload()" >
+    <div class="row"
+    flow-init="{ target: imageUploadAddress,
+      query:{ 'idAtividade': atividade._id },
+      headers:{ 'x-auth': token },
+      permanentErrors: [404,401,400,204],
+      testChunks:false}"
+      flow-files-submitted="$flow.upload()"
+      flow-file-success="$file.msg = $message" >
       <button type="button" class="btn blue input-field file-field">
         Enviar Imagens
         <i class="material-icons left">collections</i>
@@ -18,7 +24,8 @@
             <div class="card-content">
               <p>
                 <span class="truncate">{{file.name}}</span><br>
-                Tamanho: <span>{{file.size/1024 | number: 0 }} KB</span>
+                Tamanho: <span>{{file.size/1024 | number: 0 }} KB</span><br>
+                {{file.msg}}
               </p>
               <div class="progress">
                 <div class="determinate" ng-style="{width: (file.progress() * 100) + '%'}"></div>

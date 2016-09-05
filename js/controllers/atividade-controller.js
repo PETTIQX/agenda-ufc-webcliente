@@ -4,10 +4,14 @@
 
   var controllers = angular.module('starter.controllers');
 
-  function AtividadeController($scope, $rootScope, $stateParams, $state, $location, AtividadeService, LocalService) {
+  function AtividadeController($scope, $rootScope, $stateParams, $state, $location, AtividadeService, LocalService,config) {
 
 
    	$scope.init	 = function(){
+
+      $scope.serviceAddress = config.serviceAddress;
+      $scope.imageAddress = config.imageAddress;
+      $scope.imageUploadAddress = config.imageUploadAddress;
 
        $scope.cardSelecionado = function(selecionado){
          console.log(selecionado);
@@ -21,9 +25,9 @@
               if(atividade.nome === atividadeNome){
                 alert("Tem um igual...");
                 return;
-              }    
+              }
             }
-            alert("Não encontrado...");      
+            alert("Não encontrado...");
           },
           function(erro){
 
@@ -142,7 +146,7 @@
 
   }
 
-  AtividadeController.$inject = ["$scope","$rootScope", "$stateParams", "$state", "$location", "AtividadeService", "LocalService"];
+  AtividadeController.$inject = ["$scope","$rootScope", "$stateParams", "$state", "$location", "AtividadeService", "LocalService", "config"];
 
   module.exports = controllers.controller("AtividadeController", AtividadeController);
 })();
