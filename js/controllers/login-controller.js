@@ -5,7 +5,7 @@
     var controllers = angular.module('starter.controllers');
 
     function LoginController($scope, $rootScope, $stateParams, $state, LoginService, jwtHelper) {
-        
+
         $scope.init = function(){
             $scope.login = function(usuario, senha){
                 LoginService.login(usuario, senha).then(
@@ -16,7 +16,7 @@
                             $rootScope.user = jwtHelper.decodeToken(response.data.token);
                             $rootScope.token = response.data.token;
                             $rootScope.auth = true;
-                            localStorage.user = $rootScope.user;
+                            localStorage.user = JSON.stringify($rootScope.user);
                             console.log($rootScope);
                         }
 

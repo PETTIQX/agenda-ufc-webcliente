@@ -7,14 +7,11 @@
 
     function MainAppController($scope, $rootScope, $state) {
 
-        $rootScope.user = undefined;
-        $rootScope.auth = undefined;
-
         $scope.logout = function(){
             $rootScope.user = undefined;
             $rootScope.auth = undefined;
-            localStorage.user = undefined;
-            localStorage.token = undefined;
+            localStorage.removeItem('user'); 
+            localStorage.removeItem('token');
             $state.go('app');
         }
 

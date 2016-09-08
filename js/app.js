@@ -53,8 +53,9 @@
   .run(["$rootScope", "Access", "$state", function ($rootScope, Access, $state) {
 
     if(localStorage.token){
+      console.log("testeLogin", localStorage.token);
       $rootScope.auth = true;
-      $rootScope.user = localStorage.user;
+      $rootScope.user = JSON.parse(localStorage.user);
     }
 
     $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
