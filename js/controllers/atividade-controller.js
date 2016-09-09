@@ -4,7 +4,7 @@
 
   var controllers = angular.module('starter.controllers');
 
-  function AtividadeController($scope, $rootScope, $stateParams, $state, $location, AtividadeService, LocalService,config) {
+  function AtividadeController($scope, $rootScope, $stateParams, $state, $location, AtividadeService, LocalService, config) {
 
 
    	$scope.init	 = function(){
@@ -12,6 +12,7 @@
       $scope.serviceAddress = config.serviceAddress;
       $scope.imageAddress = config.imageAddress;
       $scope.imageUploadAddress = config.imageUploadAddress;
+
 
        $scope.cardSelecionado = function(selecionado){
          console.log(selecionado);
@@ -113,11 +114,6 @@
           function(response){
             console.log(response.data);
             $scope.locais = response.data;
-
-            //JORDY: Hack feio pra fazer os selects carregarem as opções
-            setTimeout(function(){
-              $('select').material_select();
-            },200);
 
             $('.chips').material_chip();
             $('.chips-initial').material_chip();

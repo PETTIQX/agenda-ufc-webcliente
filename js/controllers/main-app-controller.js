@@ -9,8 +9,9 @@
 
         $scope.logout = function(){
             $rootScope.user = undefined;
-            $rootScope.auth = undefined;
-            localStorage.removeItem('user'); 
+            $rootScope.token = undefined;
+            $rootScope.auth = false;
+            localStorage.removeItem('user');
             localStorage.removeItem('token');
             $state.go('app');
         }
