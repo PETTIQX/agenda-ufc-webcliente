@@ -21,8 +21,8 @@
     <div id="semana">
       <div ng-repeat="atividade in atividades" class="col s12 m4">
         <div class="card small">
-          <div class="card-image">
-            <img src="http://blog.sympla.com.br/wp-content/uploads/2013/07/iStock_000012681389Small-800x532.jpg">
+          <div ng-if="atividade.imagens.length > 0" class="card-image">
+            <img ng-src="{{imageAddress + atividade.imagens[0]}}">
             <span class="card-title">{{atividade.nome}}</span>
           </div>
           <div class="card-content">

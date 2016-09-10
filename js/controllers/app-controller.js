@@ -4,11 +4,12 @@
 
   var controllers = angular.module('starter.controllers');
 
-  function AppController($scope, $rootScope, AtividadeService) {
+  function AppController($scope, $rootScope, AtividadeService, config) {
 
    	$scope.init	 = function(){
 
-   		$scope.atividades = []; 
+      $scope.imageAddress = config.imageAddress;
+   		$scope.atividades = [];
 
    		AtividadeService.buscarAtividades().then(
 	   		function(response){
@@ -18,14 +19,14 @@
 	   		function(error){
 	   			console.log(error.data);
 	   		}
-   		)	
+   		)
 
    	};
 
 
   }
 
-  AppController.$inject = ["$scope","$rootScope", "AtividadeService"];
+  AppController.$inject = ["$scope","$rootScope", "AtividadeService", "config"];
 
   module.exports = controllers.controller("AppController", AppController);
 })();
