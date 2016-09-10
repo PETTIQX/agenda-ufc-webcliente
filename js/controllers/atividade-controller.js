@@ -21,6 +21,7 @@
           testChunks:false
         });
 
+
        $scope.cardSelecionado = function(selecionado){
          console.log(selecionado);
         //  return selecionado ? 'card blue' : 'card';
@@ -132,11 +133,6 @@
           function(response){
             console.log(response.data);
             $scope.locais = response.data;
-
-            //JORDY: Hack feio pra fazer os selects carregarem as opções
-            setTimeout(function(){
-              $('select').material_select();
-            },200);
 
             $('.chips').material_chip();
             $('.chips-initial').material_chip();

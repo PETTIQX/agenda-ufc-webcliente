@@ -15,19 +15,18 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <select ng-model="atividade.categoria">
-                        <option value="" disabled selected>Selecione</option>
+                    <select class="" ng-model="atividade.categoria" material-select>
                         <option value="Células">Células</option>
                         <option value="Monitoria">Monitoria</option>
-                        <option value="Extras">Extras</option>
+                        <option value="Extras">Eventos</option>
+                        <option value="Extras">Viagens</option>
                     </select>
                     <label>Categoria</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <select ng-model="atividade.local">
-                        <option value="" disabled selected>Selecione</option>
+                    <select class="" ng-model="atividade.local" material-select watch>
                         <option ng-repeat="l in locais" value="{{l._id}}">{{l.nome}}</option>
                     </select>
                     <label>Local</label>
