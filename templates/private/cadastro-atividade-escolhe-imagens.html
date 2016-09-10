@@ -1,9 +1,9 @@
 <div class="container" ng-init="init()">    <!-- FIXME: Ainda não faz uploads. Precisa dos parametros de flow-init antes -->
 
-  <a class="modal-trigger waves-effect waves-light btn" href="#modal">Modal</a>
+  <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
 
 
-  <div id="modal" class="modal">
+  <div id="modal1" class="modal">
     <div class="modal-content">
       <div class="preloader-wrapper big active">
         <div class="spinner-layer spinner-blue-only">
@@ -29,27 +29,50 @@
     <div class="row"
     flow-object="flowInstance"
     flow-init
-    flow-complete="uploadCompleto()"
-      flow-file-success="$file.msg = $message" >
+    flow-files-submitted="$flow.upload()"
+    flow-file-success="$file.msg = $message; carregarAtividades()" >
+
       <button type="button" class="btn blue input-field file-field">
         Enviar Imagens
         <i class="material-icons left">collections</i>
         <input type="file"  flow-btn>
       </button>
       <div class="row">
-        <div class="col s3" ng-repeat="file in $flow.files">
+        <!-- Primeiro carrega as imagens que já foram enviadas  -->
+        <div class="col s3" ng-repeat="imagem in atividade.imagens">
           <div class="card" ng-class="cardSelecionado(this)" >
+            <div class="card-image">
+              <!-- FIXME: JORDY: O tamanho da imagem aqui é setado hardcoded.
+              Eu quem fiz e o resultado é satisfatório, mas não gostei do método  -->
+              <img height="300" src="{{imageAddress + imagem}}" alt="" />
+            </div>
+            <div class="card-content">
+              <div class="">
+                <form class="" action="" method="post">
+                  <p>
+                   <input type="radio" id="{{imagem}}" name="principal"
+                   value="{{imagem}}" ng-checked="imagem == atividade.principal" >
+                   <label for="{{imagem}}">Foto de capa</label>
+                  </p>
+                </form>
+              </div>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn red"
+              ng-click="file.cancel()">Remover</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depois as que irão ser enviadas -->
+        <div class="col s3" ng-repeat="file in $flow.files">
+          <div class="card" ng-class="cardSelecionado(this)" ng-if="!file.msg" >
             <div class="card-image">
               <!-- FIXME: JORDY: O tamanho da imagem aqui é setado hardcoded.
               Eu quem fiz e o resultado é satisfatório, mas não gostei do método  -->
               <img height="300" flow-img="file" alt="" />
             </div>
             <div class="card-content">
-              <p>
-                <span class="truncate">{{file.name}}</span><br>
-                Tamanho: <span>{{file.size/1024 | number: 0 }} KB</span><br>
-                {{file.msg}}
-              </p>
               <div class="progress">
                 <div class="determinate"
                 ng-style="{width: (file.progress() * 100) + '%'}"></div>
@@ -64,7 +87,7 @@
       </div>
       <div class="input-field col s12">
         <button class="waves-effect waves-light btn blue"
-         ng-click="uploadImagens()">Enviar Imagens</button>
+         ng-click="uploadImagens()">Pronto</button>
       </div>
     </div>
   </form>

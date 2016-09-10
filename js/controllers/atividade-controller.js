@@ -12,6 +12,7 @@
 
       $scope.serviceAddress = config.serviceAddress;
       $scope.imageAddress = config.imageAddress;
+      $scope.imagemUploadAdress = config.imagemUploadAdress;
 
       $scope.flowInstance = flowFactory.create({
           target: config.imageUploadAddress,
@@ -30,7 +31,7 @@
       $scope.uploadImagens = function()
       {
         $scope.flowInstance.upload();
-        $('modal').openModal();
+        $('modal1').openModal();
       }
 
       $scope.uploadCompleto = function()
@@ -55,7 +56,8 @@
         );
       }
 
-       $scope.removerAtividade = function(atividadeId){
+       $scope.removerAtividade = function(atividadeId)
+       {
 
          AtividadeService.removerAtividade(atividadeId, $rootScope.token).then(
            function(response){
@@ -69,20 +71,30 @@
 
        }
 
-      if($stateParams.atividadeId){
-        $scope.atividade = {_id:$stateParams.atividadeId};
+       function carregarAtividades()
+       {
+         AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
+           function(response){
+             console.log(response.data);
+             $scope.atividade = response.data[0];
+           },
+           function(error){
+             console.log(error.data);
+           }
+         );
+         return;
+       }
 
-        AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
-          function(response){
-            console.log(response.data);
-            $scope.atividade = response.data[0];
-          },
-          function(error){
-            console.log(error.data);
-          }
-        );
+       $scope.carregarAtividades = carregarAtividades;
+
+
+      if($stateParams.atividadeId){
+
+        carregarAtividades();
         return;
+
       }
+
 
       if($stateParams.minhasAtividades && $rootScope.token){
         $scope.atividades = [];
