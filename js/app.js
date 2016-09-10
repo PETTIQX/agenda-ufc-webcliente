@@ -55,6 +55,7 @@
     if(localStorage.token){
       console.log("testeLogin", localStorage.token);
       $rootScope.auth = true;
+      $rootScope.token = localStorage.token;
       $rootScope.user = JSON.parse(localStorage.user);
     }
 
