@@ -65,7 +65,7 @@
         return;
       }
 
-      if($stateParams.minhasAtividades && $rootScope.token){
+      if($stateParams.minhasAtividades){
         $scope.atividades = [];
         AtividadeService.buscarAtividadePorUsuario($rootScope.token).then(
           function(response){
@@ -114,14 +114,6 @@
           function(response){
             console.log(response.data);
             $scope.locais = response.data;
-
-            $('.chips').material_chip();
-            $('.chips-initial').material_chip();
-            $('.chips-placeholder').material_chip({
-              placeholder: 'Digite uma tag',
-              secondaryPlaceholder: '+Tag',
-            });
-
           },
           function(error){
             console.log(error.data);

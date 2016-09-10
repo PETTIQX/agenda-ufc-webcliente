@@ -152,6 +152,14 @@
           access: ["Access", function (Access) { return Access.isPublic(); }]
         }
       })
+        .state("cadastro-atividade-agendamento", {
+        url: "/cadastro-atividade-agendamento/:atividadeId",
+        templateUrl: "templates/private/cadastro-atividade-agendamento.html",
+        controller: "AtividadeController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
       .state("upload-imagem-atividade", {
         url: "/upload-imagem-atividade",
         templateUrl: "templates/private/cadastro-atividade-escolhe-imagens.html",

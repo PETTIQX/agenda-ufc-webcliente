@@ -1,4 +1,5 @@
 <div class="container" ng-init="init()">    <!-- FIXME: Ainda não faz uploads. Precisa dos parametros de flow-init antes -->
+  <h3>Adicione imagens à sua ativiade</h3>
   <form>
     <div class="row"
     flow-init="{ target: imageUploadAddress,
@@ -38,7 +39,7 @@
         </div>
       </div>
       <div class="input-field col s12">
-        <button class="waves-effect waves-light btn blue" ng-click="cadastrarAtividade(atividade)">Cadastrar</button>
+        <button class="waves-effect waves-light btn blue" ui-sref="cadastro-atividade-agendamento({atividade: atividade})">Próximo</button>
       </div>
     </div>
   </form>

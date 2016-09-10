@@ -1,0 +1,59 @@
+<div class="container" ng-init="init()">
+  <h3>Agende sua atividade</h3>
+  <form>
+    <div input-field>
+      <select class="" ng-model="horario.frequencia" material-select watch>
+          <option value="0">Evento Pontual</option>
+          <option value="1">Evento Diário</option>
+          <option value="2">Evento Semanal</option>
+          <option value="3">Evento Mensal</option>
+      </select>
+      <label>Frequencia</label>
+    </div>
+
+    <div ng-show="horario.frequencia == 0">
+      <div input-field>
+        <label for="inputCreated">Selecione a data</label>
+        <input input-date
+        type="text"
+        name="created"
+        id="inputCreated"
+        ng-model="horario.data"
+        container=""
+        format="dd/mm/yyyy"
+        months-full="{{ month }}"
+        months-short="{{ monthShort }}"
+        weekdays-full="{{ weekdaysFull }}"
+        weekdays-short="{{ weekdaysShort }}"
+        weekdays-letter="{{ weekdaysLetter }}"
+        disable="disable"
+        min="{{ minDate }}"
+        max="{{ maxDate }}"
+        today="today"
+        first-day="1"
+        clear="clear"
+        close="close"
+        select-years="15"
+        on-start="onStart()"
+        on-render="onRender()"
+        on-open="onOpen()"
+        on-close="onClose()"
+        on-set="onSet()"
+        on-stop="onStop()" />
+      </div>
+    </div>
+
+    <div ng-show="horario.frequencia == 1">
+
+    </div>
+
+    <div ng-show="horario.frequencia == 2">
+
+    </div>
+
+    <div ng-show="horario.frequencia == 3">
+
+    </div>
+
+  </form>
+</div>
