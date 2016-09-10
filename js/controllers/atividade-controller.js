@@ -4,20 +4,39 @@
 
   var controllers = angular.module('starter.controllers');
 
-  function AtividadeController($scope, $rootScope, $stateParams, $state, $location, AtividadeService, LocalService, config) {
+  function AtividadeController($scope, $rootScope, $stateParams, $state, $location,
+     AtividadeService, LocalService,config, flowFactory) {
 
 
    	$scope.init	 = function(){
 
       $scope.serviceAddress = config.serviceAddress;
       $scope.imageAddress = config.imageAddress;
-      $scope.imageUploadAddress = config.imageUploadAddress;
+
+      $scope.flowInstance = flowFactory.create({
+          target: config.imageUploadAddress,
+          query:{ 'idAtividade': $stateParams.atividadeId },
+          headers:{ 'x-auth': $rootScope.token },
+          permanentErrors: [404,401,400,204],
+          testChunks:false
+        });
 
 
        $scope.cardSelecionado = function(selecionado){
          console.log(selecionado);
         //  return selecionado ? 'card blue' : 'card';
        }
+
+      $scope.uploadImagens = function()
+      {
+        $scope.flowInstance.upload();
+        $('modal').openModal();
+      }
+
+      $scope.uploadCompleto = function()
+      {
+        alert("Upload de imagens completo!");
+      }
 
       $scope.buscarAtividadesPorNome = function(atividadeNome){
         AtividadeService.buscarAtividades().then(
@@ -134,7 +153,8 @@
 
   }
 
-  AtividadeController.$inject = ["$scope","$rootScope", "$stateParams", "$state", "$location", "AtividadeService", "LocalService", "config"];
+  AtividadeController.$inject = ["$scope","$rootScope", "$stateParams", "$state",
+  "$location", "AtividadeService", "LocalService", "config", "flowFactory"];
 
   module.exports = controllers.controller("AtividadeController", AtividadeController);
 })();

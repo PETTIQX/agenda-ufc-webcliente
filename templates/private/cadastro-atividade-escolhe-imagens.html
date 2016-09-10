@@ -1,13 +1,35 @@
 <div class="container" ng-init="init()">    <!-- FIXME: Ainda não faz uploads. Precisa dos parametros de flow-init antes -->
-  <h3>Adicione imagens à sua ativiade</h3>
+
+  <a class="modal-trigger waves-effect waves-light btn" href="#modal">Modal</a>
+
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+      <h4>Enviando imagens</h4>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
   <form>
     <div class="row"
-    flow-init="{ target: imageUploadAddress,
-      query:{ 'idAtividade': atividade._id },
-      headers:{ 'x-auth': token },
-      permanentErrors: [404,401,400,204],
-      testChunks:false}"
-      flow-files-submitted="$flow.upload()"
+    flow-object="flowInstance"
+    flow-init
+    flow-complete="uploadCompleto()"
       flow-file-success="$file.msg = $message" >
       <button type="button" class="btn blue input-field file-field">
         Enviar Imagens
@@ -29,17 +51,20 @@
                 {{file.msg}}
               </p>
               <div class="progress">
-                <div class="determinate" ng-style="{width: (file.progress() * 100) + '%'}"></div>
+                <div class="determinate"
+                ng-style="{width: (file.progress() * 100) + '%'}"></div>
               </div>
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-light btn red" ng-click="file.cancel()">Remover</a>
+              <a class="waves-effect waves-light btn red"
+              ng-click="file.cancel()">Remover</a>
             </div>
           </div>
         </div>
       </div>
       <div class="input-field col s12">
-        <button class="waves-effect waves-light btn blue" ui-sref="cadastro-atividade-agendamento({atividade: atividade})">Próximo</button>
+        <button class="waves-effect waves-light btn blue"
+         ng-click="uploadImagens()">Enviar Imagens</button>
       </div>
     </div>
   </form>
