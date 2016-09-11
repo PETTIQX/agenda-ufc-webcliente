@@ -1,0 +1,58 @@
+<div class="container" ng-init="init()">
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Nome" id="nome" type="text" class="validate" ng-model="atividade.nome">
+                    <label for="nome">Nome</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Descrição" id="descricao" type="text" class="validate" ng-model="atividade.descricao">
+                    <label for="descricao">Descrição</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select class="" ng-model="atividade.categoria" material-select>
+                        <option value="Células">Células</option>
+                        <option value="Monitoria">Monitoria</option>
+                        <option value="Extras">Eventos</option>
+                        <option value="Extras">Viagens</option>
+                    </select>
+                    <label>Categoria</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select class="" ng-model="atividade.local" material-select watch>
+                        <option ng-repeat="l in locais" value="{{l._id}}">{{l.nome}}</option>
+                    </select>
+                    <label>Local</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Site" id="site" type="text" class="validate" ng-model="atividade.site">
+                    <label for="site">Site</label>
+                </div>
+
+              <div class="col s6">
+                <div class="input-field">
+                  <input type="text" name="tags" value="" ng-model="atividade.tags"
+                  placeholder="Ponha aqui tags separadas por espaço">
+                  <label for="tags">Tags</label>
+                </div>
+              </div>
+            </div>
+            <input type="hiddem" value="{{atividadeId}}" ng-model="atividade._id">
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="waves-effect waves-light btn blue" ng-click="atualizarAtividade(atividade)">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

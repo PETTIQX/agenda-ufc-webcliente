@@ -145,6 +145,14 @@
           access: ["Access", function (Access) { return Access.isPublic(); }]
         }
       })
+      .state("editar-atividade-info", {
+        url: "/editar-atividade-info/:atividadeId",
+        templateUrl: "templates/private/editar-atividade-info.html",
+        controller: "AtividadeController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
       .state("cadastro-imagem-atividade", {
         url: "/cadastro-imagem-atividade/:atividadeId",
         templateUrl: "templates/private/cadastro-atividade-escolhe-imagens.html",

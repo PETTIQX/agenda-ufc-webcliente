@@ -21,12 +21,11 @@
     <div id="semana">
       <div ng-repeat="atividade in atividades" class="col s12 m4">
         <div class="card small">
-          <div ng-if="atividade.imagens.length > 0" class="card-image">
-            <img ng-src="{{imageAddress + atividade.imagens[0]}}">
-            <span class="card-title">{{atividade.nome}}</span>
+          <div class="card-image">
+            <img ng-if="atividade.imagens.length > 0" ng-src="{{imageAddress + atividade.imagens[0]}}">
           </div>
           <div class="card-content">
-            <p>{{atividade.descricao}}</p>
+            <span style="font-size:16px;">{{atividade.nome}}</span>
           </div>
           <div class="card-action">
             <a ui-sref="atividade-detalhes({atividadeId: atividade._id})" class="btn blue">Detalhes</a>

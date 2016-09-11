@@ -31,7 +31,7 @@
       $scope.uploadImagens = function()
       {
         $scope.flowInstance.upload();
-        $('modal1').openModal();
+        $('#modal1').openModal();
       }
 
       $scope.uploadCompleto = function()
@@ -54,6 +54,7 @@
 
           }
         );
+        return;
       }
 
        $scope.removerAtividade = function(atividadeId)
@@ -67,8 +68,8 @@
            function(erro){
              console.log(erro.data);
            }
-         )
-
+         );
+         return;
        }
 
        function carregarAtividades()
