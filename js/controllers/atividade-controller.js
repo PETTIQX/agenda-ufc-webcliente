@@ -31,7 +31,7 @@
       $scope.uploadImagens = function()
       {
         $scope.flowInstance.upload();
-        $('modal1').openModal();
+        $('#modal1').openModal();
       }
 
       $scope.uploadCompleto = function()
@@ -54,6 +54,7 @@
 
           }
         );
+        return;
       }
 
       $scope.atualizarAtividade = function(atividade){
@@ -81,8 +82,8 @@
            function(erro){
              console.log(erro.data);
            }
-         )
-
+         );
+         return;
        }
 
        function carregarAtividades()
@@ -151,9 +152,23 @@
             alert("Erro: " + error.data);
             console.log(error)
           });
+          return;
       };
 
-      if($stateParams.cadastrarAtividade){
+      $scope.atualizarAtividade = atualizarAtividade;
+
+      function atualizarAtividade(atividade){
+        AtividadeService.atualizarAtividade(atividade, $rootScope.token).then(
+          function(response){
+            alert("Atualizado com sucesso!");
+          },
+          function(error){
+            alert("Erro ao atualizar...");
+          });
+          return;
+      }
+
+      if($stateParams.cadastrarAtividade || $stateParams.editarAtividade){
         $scope.locais = [];
         LocalService.buscarLocais().then(
           function(response){
