@@ -1,29 +1,4 @@
-<div class="container" ng-init="init()">    <!-- FIXME: Ainda não faz uploads. Precisa dos parametros de flow-init antes -->
-
-  <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
-
-
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue-only">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div>
-          <div class="gap-patch">
-            <div class="circle"></div>
-          </div>
-          <div class="circle-clipper right">
-            <div class="circle"></div>
-          </div>
-        </div>
-      </div>
-      <h4>Enviando imagens</h4>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+<div class="container" ng-init="init()">    
 
   <form>
     <div class="row"
@@ -40,7 +15,7 @@
       <div class="row">
         <!-- Primeiro carrega as imagens que já foram enviadas  -->
         <div class="col s3" ng-repeat="imagem in atividade.imagens">
-          <div class="card" ng-class="cardSelecionado(this)" >
+          <div class="card" >
             <div class="card-image">
               <!-- FIXME: JORDY: O tamanho da imagem aqui é setado hardcoded.
               Eu quem fiz e o resultado é satisfatório, mas não gostei do método  -->
@@ -51,7 +26,8 @@
                 <form class="" action="" method="post">
                   <p>
                    <input type="radio" id="{{imagem}}" name="principal"
-                   value="{{imagem}}" ng-checked="imagem == atividade.principal" >
+                   value="{{imagem}}" ng-checked="imagem == atividade.principal"
+                   ng-model="atividade.principal" ng-click="atualizarAtividade(atividade)">
                    <label for="{{imagem}}">Foto de capa</label>
                   </p>
                 </form>

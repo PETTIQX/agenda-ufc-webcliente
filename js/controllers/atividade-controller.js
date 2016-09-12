@@ -56,6 +56,20 @@
         );
       }
 
+      $scope.atualizarAtividade = function(atividade){
+        AtividadeService.atualizarAtividade(atividade,$rootScope.token)
+        .then(function(response){
+          console.log("Atividade atualizada!",response.data);
+          $scope.atividade = response.data;
+
+        },
+        // else
+        function(err){
+
+        }
+      )
+      }
+
        $scope.removerAtividade = function(atividadeId)
        {
 
@@ -160,7 +174,10 @@
 
 
 
+
    	};
+
+
 
 
   }
