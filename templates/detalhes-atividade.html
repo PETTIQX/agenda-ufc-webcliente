@@ -1,15 +1,13 @@
   <div class="container">
 
     <div ng-init="init()">
-      <!-- <div slider class="slider" ng-if="atividade.imagens.length > 0">
+      <div slider class="slider" ng-if="atividade.imagens.length > 0">
           <ul class="slides">
-              <div ng-repeat="imagem in atividade.imagens">
-                  <li>
-                    <img ng-src="{{imageAddress + imagem}}">
-                  </li>
-              </div>
+              <li ng-repeat="imagem in atividade.imagens">
+                <img ng-src="{{imageAddress + imagem}}">
+              </li>
           </ul>
-      </div> -->
+      </div>
       <h2>{{atividade.nome}}</h2>
 
       <p><b>Descrição: </b>{{atividade.descricao}}</p>
@@ -33,7 +31,7 @@
         <p>Editar:</p>
         <div class="row">
           <div class="col s4">
-            <a ui-sref="#"><i class="material-icons left">mode_edit</i>Informções</a>
+            <a ui-sref="editar-atividade-info({editarAtividade: 'editarAtividade', atividadeId: atividade._id})"><i class="material-icons left">mode_edit</i>Informções</a>
           </div>
           <div class="col s4">
             <a ui-sref="cadastro-imagem-atividade({atividadeId: atividade._id})"><i class="material-icons left">photo_library</i>Imagens</a>

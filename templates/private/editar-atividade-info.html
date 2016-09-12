@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <select class="" ng-model="atividade.local" material-select watch>
+                    <select ng-model="local" material-select watch>
                         <option ng-repeat="l in locais" value="{{l._id}}">{{l.nome}}</option>
                     </select>
                     <label>Local</label>
@@ -46,10 +46,10 @@
                 </div>
               </div>
             </div>
-            <input type="hiddem" value="{{atividadeId}}" ng-model="atividade._id">
+            <input type="hidden" value="{{atividadeId}}" ng-model="atividade._id">
             <div class="row">
                 <div class="input-field col s12">
-                    <button class="waves-effect waves-light btn blue" ng-click="atualizarAtividade(atividade)">Cadastrar</button>
+                    <button class="waves-effect waves-light btn blue" ng-click="atualizarAtividade(atividade)">Salvar</button>
                 </div>
             </div>
         </form>
