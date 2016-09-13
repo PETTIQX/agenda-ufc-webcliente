@@ -26,8 +26,8 @@
                 <form class="" action="" method="post">
                   <p>
                    <input type="radio" id="{{imagem}}" name="principal"
-                   value="{{imagem}}" ng-checked="imagem == atividade.principal"
-                   ng-model="atividade.principal" ng-click="atualizarAtividade(atividade)">
+                   value="{{imagem}}" ng-checked="imagem == atividade.imagemPrincipal"
+                   ng-model="atividade.imagemPrincipal" ng-click="atualizarAtividade(atividade)">
                    <label for="{{imagem}}">Foto de capa</label>
                   </p>
                 </form>
@@ -35,7 +35,7 @@
             </div>
             <div class="card-action">
               <a class="waves-effect waves-light btn red"
-              ng-click="file.cancel()">Remover</a>
+              ng-click="removerImagem(imagem)">Remover</a>
             </div>
           </div>
         </div>

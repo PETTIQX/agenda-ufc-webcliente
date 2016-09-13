@@ -86,6 +86,17 @@
          return;
        }
 
+       $scope.removerImagem = function(nomeImagem){
+         AtividadeService.removerImagem($scope.atividade._id, $rootScope.token, nomeImagem)
+          .then(function(response){
+              console.log("Imagem removida com sucesso");
+              carregarAtividades();
+          },
+          function(err){
+          console.log(err);
+        });
+       }
+
        function carregarAtividades()
        {
          AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(

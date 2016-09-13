@@ -10,6 +10,7 @@
         var BUSCA_ATIVIDADES_PRIVADA = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES_PRIVADA);
         var PRIVATE_ATIVIDADE = AppTollkit.serviceAddress(routes.PRIVATE_ATIVIDADE);
         var UPLOAD_IMAGEM = AppTollkit.serviceAddress(routes.UPLOAD_IMAGEM);
+        var DEL_IMAGEM  = AppTollkit.serviceAddress(routes.DEL_IMAGEM);
 
         var AtividadeService = {};
         AtividadeService.buscarAtividades = buscarAtividades;
@@ -115,7 +116,8 @@
                     local : atividade.local,
                     tags : atividade.tags,
                     site : atividade.site,
-                    imagens : atividade.imagens
+                    imagens : atividade.imagens,
+                    imagemPrincipal: atividade.imagemPrincipal
                 }
             };
 
@@ -143,10 +145,30 @@
                 headers : {
                     "X-Auth" : userToken
                 },
-                data : params 
+                data : params
             };
             return $http(req);
         }
+
+        function removerImagem(atividadeId, userToken, nomeImagem){
+          var params = {
+            idAtividade: atividadeId,
+            imagem: nomeImagem
+          };
+
+          var req = {
+            method: "DELETE",
+            url:  DEL_IMAGEM,
+            headers: {
+              "Content-Type" : "application/json;charset=utf-8",
+              "X-Auth": userToken
+            },
+            data: params
+          };
+          return $http(req);
+        }
+
+        AtividadeService.removerImagem = removerImagem;
 
         return AtividadeService;
     }

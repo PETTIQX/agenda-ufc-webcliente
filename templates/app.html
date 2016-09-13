@@ -22,7 +22,7 @@
       <div ng-repeat="atividade in atividades" class="col s12 m4">
         <div class="card small">
           <div class="card-image">
-            <img ng-if="atividade.imagens.length > 0" ng-src="{{imageAddress + atividade.imagens[0]}}">
+            <img ng-if="atividade.imagens.length > 0" ng-src="{{imageAddress + atividade.imagemPrincipal}}">
           </div>
           <div class="card-content">
             <span style="font-size:16px;">{{atividade.nome}}</span>

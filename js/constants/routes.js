@@ -15,7 +15,8 @@
           BUSCA_LOCAIS: "/api/public/local/busca",
           PRIVATE_LOCAL: "/api/private/local",
           CADASTRO: "/api/public/usuario",
-          UPLOAD_IMAGEM: "/api/private/atividade/image"
+          UPLOAD_IMAGEM: "/api/private/atividade/image",
+          DEL_IMAGEM: "/api/private/atividade/image"
       };
     return routes;
   }
