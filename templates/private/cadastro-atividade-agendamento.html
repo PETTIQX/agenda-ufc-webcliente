@@ -1,59 +1,78 @@
+<script>
+$(document).ready(function(){
+  $('#timepicker').pickatime({
+    autoclose: true,
+    twelvehour: false
+  });
+});
+</script>
+
+
 <div class="container" ng-init="init()">
-  <h3>Agende sua atividade</h3>
-  <form>
-    <div input-field>
-      <select class="" ng-model="horario.frequencia" material-select watch>
-          <option value="0">Evento Pontual</option>
-          <option value="1">Evento Diário</option>
-          <option value="2">Evento Semanal</option>
-          <option value="3">Evento Mensal</option>
-      </select>
-      <label>Frequencia</label>
-    </div>
+  <div class=" col s12">
+    <h3>Agende sua atividade</h3>
+    <form>
+        <div>
+          <label for="frequenciaSelect">Frequência</label>
+          <select id="frequenciaSelect" ng-model="horario.frequencia" material-select watch>
+              <option ng-repeat="frequencia in ['Evento Pontual', 'Evento Diário', 'Evento Semanal', 'Evento Mensal']" ng-value="{{$index}}">{{frequencia}}</option>
+          </select>
+        </div>
 
-    <div ng-show="horario.frequencia == 0">
-      <div input-field>
-        <label for="inputCreated">Selecione a data</label>
-        <input input-date
-        type="text"
-        name="created"
-        id="inputCreated"
-        ng-model="horario.data"
-        container=""
-        format="dd/mm/yyyy"
-        months-full="{{ month }}"
-        months-short="{{ monthShort }}"
-        weekdays-full="{{ weekdaysFull }}"
-        weekdays-short="{{ weekdaysShort }}"
-        weekdays-letter="{{ weekdaysLetter }}"
-        disable="disable"
-        min="{{ minDate }}"
-        max="{{ maxDate }}"
-        today="today"
-        first-day="1"
-        clear="clear"
-        close="close"
-        select-years="15"
-        on-start="onStart()"
-        on-render="onRender()"
-        on-open="onOpen()"
-        on-close="onClose()"
-        on-set="onSet()"
-        on-stop="onStop()" />
+        <div class="input-field">
+          <label for="timepicker">Selecione o horário de início</label>
+          <input id="timepicker" class="timepicker" ng-model="horario.hora" type="time">
+        </div>
+
+        <div input-field ng-show="horario.frequencia == 0 || horario.frequencia == 1 || horario.frequencia == 3">
+          <label for="inputCreated">Selecione a data</label>
+          <input input-date type="text" id="inputCreated" ng-model="horario.data" format="dd/mm/yyyy"/>
+        </div>
+
+        <div class="switch" style="padding-bottom: 30px;" ng-show="horario.frequencia == 1">
+          <label>Contar fins de semana?</label>
+          <br>
+          <label>
+            Não
+            <input id="switch" type="checkbox" ng-model="horario.excluirFds">
+            <span class="lever"></span>
+            Sim
+          </label>
+        </div>
+
+        <div ng-show="horario.frequencia == 2">
+            <label for="diaDaSemanaSelect">Dia da semana</label>
+            <select id="diaDaSemanaSelect" ng-model="horario.diaDaSemana" material-select watch>
+                <option ng-repeat="dia in ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']" ng-value="{{$index}}">{{dia}}</option>
+            </select>
+        </div>
+
+        <button class="waves-effect waves-light btn blue" ng-click="atualizarHorario(atividade, horario)">Adicionar Horário</button>
+        <br><br><!--RAUL: Eu tentei fazer isso de outro jeito, juro...-->
+    </form>
+
+    <div ng-show="atividade.horarios.length > 0">
+      <hr>
+      <p>Agendamento atual:</p>
+
+      <div class="row">
+        <div ng-repeat="horario in atividade.horarios" class="col s12 m4">
+          <div class="card small">
+            <div class="card-content blue-text">
+              <span class="card-title">{{horarioFrequencia[horario.frequencia]}}</span>
+              <p><b>Horário: </b>{{horario.hora}}</p>
+              <p ng-show="horario.frequencia == 0"><b>Data: </b>{{horario.dia + '/' + horario.mes + '/' + horario.ano}}</p>
+              <p ng-show="horario.frequencia == 2"><b>Dia da semana: </b>{{horario.diaDaSemana}}</p>
+              <p ng-show="horario.frequencia == 3"><b>Dia do mês: </b>{{horario.dia}}</p>
+            </div>
+            <div class="card-action">
+              <button ng-click="removerHorario(atividade, $index)" class="waves-effect waves-light btn red">Remover</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div ng-show="horario.frequencia == 1">
 
     </div>
 
-    <div ng-show="horario.frequencia == 2">
-
-    </div>
-
-    <div ng-show="horario.frequencia == 3">
-
-    </div>
-
-  </form>
+  </div>
 </div>

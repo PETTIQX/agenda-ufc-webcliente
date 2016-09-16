@@ -162,7 +162,7 @@
         }
       })
         .state("cadastro-atividade-agendamento", {
-        url: "/cadastro-atividade-agendamento/:atividadeId",
+        url: "/cadastro-atividade-agendamento/:atividadeId/:agendarAtividade",
         templateUrl: "templates/private/cadastro-atividade-agendamento.html",
         controller: "AtividadeController",
         resolve: {

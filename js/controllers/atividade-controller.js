@@ -5,7 +5,7 @@
   var controllers = angular.module('starter.controllers');
 
   function AtividadeController($scope, $rootScope, $stateParams, $state, $location,
-     AtividadeService, LocalService,config, flowFactory) {
+     AtividadeService, LocalService, config, flowFactory) {
 
 
    	$scope.init	 = function(){
@@ -31,12 +31,91 @@
       $scope.uploadImagens = function()
       {
         $scope.flowInstance.upload();
-        $('#modal1').openModal();
+        $location.path("app");
       }
 
       $scope.uploadCompleto = function()
       {
         alert("Upload de imagens completo!");
+      }
+
+      $scope.removerHorario = removerHorario;
+      function removerHorario(atividade, index){
+        atividade.horarios.splice(index, 1);
+        atualizarAtividade(atividade);
+      }
+
+      $scope.atualizarHorario = atualizarHorario;
+      function atualizarHorario(atividade, horario){
+
+        if(horario.data){
+          var vetorData = horario.data.split('/');
+        }
+        //Se não é evento semanal...
+        if(horario.frequencia != 2){
+          var date = new Date();
+          horario.diaDaSemana = date.getDay();
+        }
+
+        if(horario.frequencia == 0){
+
+          var novoHorario = {
+              hora : horario.hora,
+              dia : vetorData[0],
+              mes : vetorData[1],
+              ano : vetorData[2],
+              frequencia : horario.frequencia,
+              diaDaSemana : horario.diaDaSemana
+          };
+
+          atividade.horarios.push(novoHorario);
+          atualizarAtividade(atividade);
+        }
+
+        else if(horario.frequencia == 1){
+          var novoHorario = {
+              hora : horario.hora,
+              dia : vetorData[0],
+              mes : vetorData[1],
+              ano : vetorData[2],
+              frequencia : horario.frequencia,
+              excluirFds : horario.excluirFds,
+              diaDaSemana : horario.diaDaSemana
+          };
+
+          atividade.horarios.push(novoHorario);
+          atualizarAtividade(atividade);
+        }
+
+        else if(horario.frequencia == 2){
+          var novoHorario = {
+              hora : horario.hora,
+              dia : 0,
+              mes : 0,
+              ano : 0,
+              frequencia : horario.frequencia,
+              diaDaSemana : horario.diaDaSemana
+          };
+
+          atividade.horarios.push(novoHorario);
+          atualizarAtividade(atividade);
+        }
+
+        else if(horario.frequencia == 3){
+          var novoHorario = {
+              hora : horario.hora,
+              dia : vetorData[0],
+              mes : vetorData[1],
+              ano : vetorData[2],
+              frequencia : horario.frequencia,
+              diaDaSemana : horario.diaDaSemana
+          };
+
+          atividade.horarios.push(novoHorario);
+          atualizarAtividade(atividade);
+        }
+
+        $scope.horario = {};
       }
 
       $scope.buscarAtividadesPorNome = function(atividadeNome){
@@ -52,95 +131,7 @@
           },
           function(erro){
 
-          }
-        );
-        return;
-      }
-
-      $scope.atualizarAtividade = function(atividade){
-        AtividadeService.atualizarAtividade(atividade,$rootScope.token)
-        .then(function(response){
-          console.log("Atividade atualizada!",response.data);
-          $scope.atividade = response.data;
-
-        },
-        // else
-        function(err){
-
-        }
-      )
-      }
-
-       $scope.removerAtividade = function(atividadeId)
-       {
-
-         AtividadeService.removerAtividade(atividadeId, $rootScope.token).then(
-           function(response){
-             console.log(response.data);
-             $state.reload();
-           },
-           function(erro){
-             console.log(erro.data);
-           }
-         );
-         return;
-       }
-
-       $scope.removerImagem = function(nomeImagem){
-         AtividadeService.removerImagem($scope.atividade._id, $rootScope.token, nomeImagem)
-          .then(function(response){
-              console.log("Imagem removida com sucesso");
-              carregarAtividades();
-          },
-          function(err){
-          console.log(err);
-        });
-       }
-
-       function carregarAtividades()
-       {
-         AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
-           function(response){
-             console.log(response.data);
-             $scope.atividade = response.data[0];
-           },
-           function(error){
-             console.log(error.data);
-           }
-         );
-         return;
-       }
-
-       $scope.carregarAtividades = carregarAtividades;
-
-
-      if($stateParams.atividadeId){
-
-        carregarAtividades();
-        return;
-
-      }
-
-
-      if($stateParams.minhasAtividades){
-        $scope.atividades = [];
-        AtividadeService.buscarAtividadePorUsuario($rootScope.token).then(
-          function(response){
-            console.log(response.data);
-            $scope.atividades = response.data;
-
-            if(!$scope.atividades.lenght){
-              setTimeout(function(){
-                $('#semAtividadesModal').openModal();
-                $('.modal-trigger').leanModal();
-              });
-            }
-
-          },
-          function(error){
-            console.log(error.data);
-          }
-        );
+          });
         return;
       }
 
@@ -172,6 +163,7 @@
         AtividadeService.atualizarAtividade(atividade, $rootScope.token).then(
           function(response){
             alert("Atualizado com sucesso!");
+            console.log(atividade);
           },
           function(error){
             alert("Erro ao atualizar...");
@@ -179,7 +171,69 @@
           return;
       }
 
-      if($stateParams.cadastrarAtividade || $stateParams.editarAtividade){
+      $scope.removerAtividade = function(atividadeId){
+
+         AtividadeService.removerAtividade(atividadeId, $rootScope.token).then(
+           function(response){
+             console.log(response.data);
+             $state.reload();
+           },
+           function(erro){
+             console.log(erro.data);
+           });
+         return;
+       }
+
+       $scope.removerImagem = function(nomeImagem){
+         AtividadeService.removerImagem($scope.atividade._id, $rootScope.token, nomeImagem)
+          .then(function(response){
+              console.log("Imagem removida com sucesso");
+              carregarAtividades();
+          },
+          function(err){
+          console.log(err);
+        });
+       }
+
+       function carregarAtividades()
+       {
+         AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
+           function(response){
+             console.log(response.data);
+             $scope.atividade = response.data[0];
+           },
+           function(error){
+             console.log(error.data);
+           });
+         return;
+       }
+
+       $scope.carregarAtividades = carregarAtividades;
+
+
+      if($stateParams.atividadeId){
+        if($stateParams.agendarAtividade){
+          $scope.horarioFrequencia = ["Pontual", "Diário", "Semanal", "Mensal"];
+        }
+        carregarAtividades();
+        return;
+      }
+
+
+      if($stateParams.minhasAtividades){
+        $scope.atividades = [];
+        AtividadeService.buscarAtividadePorUsuario($rootScope.token).then(
+          function(response){
+            console.log(response.data);
+            $scope.atividades = response.data;
+          },
+          function(error){
+            console.log(error.data);
+          });
+        return;
+      }
+
+      if($stateParams.cadastrarAtividade){
         $scope.locais = [];
         LocalService.buscarLocais().then(
           function(response){
@@ -188,9 +242,21 @@
           },
           function(error){
             console.log(error.data);
-          }
-        );
+          });
         return;
+      }
+
+      if($stateParams.agendarAtividade){
+        $scope.horarioFrequencia = ["Pontual", "Diário", "Semana", "Mensal"];
+        AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
+          function(response){
+            console.log(response.data);
+            $scope.atividade = response.data;
+          },
+          function(error){
+            console.log(error.data);
+          });
+          return;
       }
 
       else{
@@ -198,13 +264,7 @@
         return;
       }
 
-
-
-
    	};
-
-
-
 
   }
 
