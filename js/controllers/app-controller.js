@@ -11,10 +11,10 @@
       $scope.imageAddress = config.imageAddress;
    		$scope.atividades = [];
 
-   		AtividadeService.buscarAtividades().then(
+      AtividadeService.buscarAtividades().then(
 	   		function(response){
 	   			console.log(response.data);
-	   			$scope.atividades = response.data;
+          $scope.atividades = response.data;
 	   		},
 	   		function(error){
 	   			console.log(error.data);

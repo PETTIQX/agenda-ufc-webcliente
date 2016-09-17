@@ -18,6 +18,7 @@
 
     }
 
+
     MainAppController.$inject  = ["$scope","$rootScope","$state"];
 
     module.exports = controllers.controller("MainAppController", MainAppController);
