@@ -20,9 +20,19 @@
         </div>
         <p ng-if="atividade.horarios.length > 0">
             <b>Horários: </b>
-            <div ng-repeat="horario in atividade.horarios">
-                {{horario}}
-                <br>
+            <div class="row">
+              <div ng-repeat="horario in atividade.horarios" class="col s12 m4">
+                <div class="card-panel small">
+                  <div class="card-content blue-text">
+                    <h5>{{horarioFrequencia[horario.frequencia]}}</h5>
+                    <p><b>Horário: </b>{{horario.hora | date: 'HH:mm'}}</p>
+                    <p ng-show="horario.frequencia == 0"><b>Data: </b>{{horario.dia + '/' + horario.mes + '/' + horario.ano}}</p>
+                    <p ng-show="horario.frequencia == 1"><b>Fins de Semana: </b>{{horario.excluirFds ? "Não" : "Sim"}}</p>
+                    <p ng-show="horario.frequencia == 2"><b>Dia da semana: </b>{{diasDaSemana[horario.diaDaSemana]}}</p>
+                    <p ng-show="horario.frequencia == 3"><b>Dia do mês: </b>{{horario.dia}}</p>
+                  </div>
+                </div>
+              </div>
             </div>
         </p>
         <div ng-show="atividade.usuario == user._id">
@@ -33,7 +43,7 @@
               <a ui-sref="editar-atividade-info({editarAtividade: 'editarAtividade', atividadeId: atividade._id})"><i class="material-icons left">mode_edit</i>Informções</a>
             </div>
             <div class="col s4">
-              <a ui-sref="cadastro-imagem-atividade({atividadeId: atividade._id})"><i class="material-icons left">photo_library</i>Imagens</a>
+              <a ui-sref="cadastro-imagem-atividade({atividadeId: atividade._id, action: 'editar'})"><i class="material-icons left">photo_library</i>Imagens</a>
             </div>
             <div class="col s4">
               <a ui-sref="cadastro-atividade-agendamento({atividadeId: atividade._id, agendarAtividade: 'agendamento'})"><i class="material-icons left">today</i>Agendamento</a>

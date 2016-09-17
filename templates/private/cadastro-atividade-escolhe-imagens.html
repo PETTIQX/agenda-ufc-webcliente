@@ -17,8 +17,6 @@
         <div class="col s12 m4" ng-repeat="imagem in atividade.imagens">
           <div class="card small">
             <div class="card-image">
-              <!-- FIXME: JORDY: O tamanho da imagem aqui é setado hardcoded.
-              Eu quem fiz e o resultado é satisfatório, mas não gostei do método  -->
               <img src="{{imageAddress + imagem}}" alt="" />
             </div>
             <div class="card-content">
@@ -41,12 +39,10 @@
         </div>
 
         <!-- Depois as que irão ser enviadas -->
-        <div class="col s3" ng-repeat="file in $flow.files">
-          <div class="card" ng-class="cardSelecionado(this)" ng-if="!file.msg" >
+        <div class="col s12 m4" ng-repeat="file in $flow.files">
+          <div class="card small" ng-class="cardSelecionado(this)" ng-if="!file.msg" >
             <div class="card-image">
-              <!-- FIXME: JORDY: O tamanho da imagem aqui é setado hardcoded.
-              Eu quem fiz e o resultado é satisfatório, mas não gostei do método  -->
-              <img height="300" flow-img="file" alt="" />
+              <img flow-img="file" alt="" />
             </div>
             <div class="card-content">
               <div class="progress">

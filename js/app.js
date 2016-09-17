@@ -154,7 +154,7 @@
         }
       })
       .state("cadastro-imagem-atividade", {
-        url: "/cadastro-imagem-atividade/:atividadeId",
+        url: "/cadastro-imagem-atividade/:atividadeId/:action",
         templateUrl: "templates/private/cadastro-atividade-escolhe-imagens.html",
         controller: "AtividadeController",
         resolve: {

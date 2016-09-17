@@ -31,7 +31,12 @@
       $scope.uploadImagens = function()
       {
         $scope.flowInstance.upload();
-        $location.path("app");
+        if($stateParams.action == 'editar'){
+          $location.path("app");
+        }
+        else if($stateParams.action == 'cadastrar'){
+          $location.path("cadastro-atividade-agendamento/" + $scope.atividade._id + "/agendarAtividade");
+        }
       }
 
       $scope.uploadCompleto = function()
@@ -147,7 +152,7 @@
               console.log(response.data);
               alert('Atividade Cadastrada');
               var idAtividade = response.data._id;
-              $location.path("/cadastro-imagem-atividade/" + idAtividade);
+              $location.path("/cadastro-imagem-atividade/" + idAtividade + "/cadastrar");
 
           },
           function(error){
@@ -212,9 +217,8 @@
 
 
       if($stateParams.atividadeId){
-        if($stateParams.agendarAtividade){
-          $scope.horarioFrequencia = ["Pontual", "Diário", "Semanal", "Mensal"];
-        }
+        $scope.horarioFrequencia = ["Pontual", "Diário", "Semanal", "Mensal"];
+        $scope.diasDaSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
         carregarAtividades();
         return;
       }
