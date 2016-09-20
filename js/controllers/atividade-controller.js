@@ -167,11 +167,10 @@
       function atualizarAtividade(atividade){
         AtividadeService.atualizarAtividade(atividade, $rootScope.token).then(
           function(response){
-            alert("Atualizado com sucesso!");
-            console.log(atividade);
+            console.log("atividade atualizada com sucesso");
           },
           function(error){
-            alert("Erro ao atualizar...");
+            console.log("Erro ao atualizar...");
           });
           return;
       }
