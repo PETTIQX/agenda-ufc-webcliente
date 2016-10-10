@@ -50,3 +50,13 @@ span.card-title a, .card .card-content .card-title {
 .main-com-menu {
   margin-top: 64px;
 }
+
+#mobile-tab{
+  visibility: hidden;
+}
+
+@media screen and (max-width: 400px){
+  #mobile-tab{
+    visibility: visible;
+  }
+}

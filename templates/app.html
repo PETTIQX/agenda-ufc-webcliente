@@ -4,7 +4,7 @@
     $('ul.tabs').tabs();
   });
 </script>
-<ul ng-show="!auth" class="tabs blue darken-4">
+<ul class="tabs blue darken-4" id="mobile-tab">
   <li class="tab col s3"><a class="white-text" href="#hoje">Hoje</a></li>
   <li class="tab col s3"><a class="white-text active" href="#semana">Semana</a></li>
   <li class="tab col s3"><a class="white-text" href="#mes">Mês</a></li>
@@ -13,7 +13,6 @@
 
 <div ng-init="init()">
 
-  <div class="row">
     <nav style="padding-left: 0px;">
       <div class="nav-wrapper blue">
         <form>
@@ -26,29 +25,33 @@
       </div>
     </nav>
 
-    <div id="hoje">
-      <h2>Eventos do dia</h2>
-    </div>
+      <div id="hoje">
+        <h2>Eventos do dia</h2>
+      </div>
 
-    <div id="semana">
-      <div ng-repeat="atividade in atividades | filter : searchAtividade" class="col s12 m4">
-        <div class="card small">
-          <div class="card-image">
-            <img ng-if="atividade.imagemPrincipal" ng-src="{{imageAddress + atividade.imagemPrincipal}}">
-          </div>
-          <div class="card-content">
-            <span style="font-size:16px;">{{atividade.nome}}</span>
-          </div>
-          <div class="card-action">
-            <a ui-sref="atividade-detalhes({atividadeId: atividade._id})" class="btn blue">Detalhes</a>
+      <div id="semana" class="content-cards">
+        <div ng-repeat="atividade in atividades | filter : searchAtividade" class="margin-card cartao-principal">
+          <div class="card small">
+            <div class="card-image imagem-cartao-principal">
+              <img class="" ng-if="atividade.imagemPrincipal" ng-src="{{imageAddress + atividade.imagemPrincipal}}">
+              <img ng-if="!atividade.imagemPrincipal" src="img/orange.jpg" alt="" />
+              <h1 ng-if="!atividade.imagemPrincipal" class="card-title bold">Evento</h1>
+            </div>
+            <div class="card-content">
+              <span style="font-size:16px;">{{atividade.nome}}</span>
+            </div>
+            <div class="card-action">
+              <a ui-sref="atividade-detalhes({atividadeId: atividade._id})" class="btn blue">Detalhes</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div id="mes">
-      <h2>Eventos do mês</h2>
-    </div>
+      <div id="mes">
+        <h2>Eventos do mês</h2>
+      </div>
+
+
 
     <div ng-show="user.editor" class="fixed-action-btn horizontal click-to-toggle" style="bottom: 60px; right: 24px;">
       <a class="btn-floating btn-large blue">
@@ -60,5 +63,4 @@
       </ul>
     </div>
 
-  </div>
 </div>
