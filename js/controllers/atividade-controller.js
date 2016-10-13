@@ -123,23 +123,6 @@
         $scope.horario = {};
       }
 
-      $scope.buscarAtividadesPorNome = function(atividadeNome){
-        AtividadeService.buscarAtividades().then(
-          function(response){
-            for(var atividade in response.data){
-              if(atividade.nome === atividadeNome){
-                alert("Tem um igual...");
-                return;
-              }
-            }
-            alert("Não encontrado...");
-          },
-          function(erro){
-
-          });
-        return;
-      }
-
       $scope.cadastrarAtividade = cadastrarAtividade;
 
       function cadastrarAtividade(atividade){
@@ -165,9 +148,14 @@
       $scope.atualizarAtividade = atualizarAtividade;
 
       function atualizarAtividade(atividade){
+        
+        var splitTags = atividade.tags.split(" ");
+        atividade.tags = splitTags;
+
         AtividadeService.atualizarAtividade(atividade, $rootScope.token).then(
           function(response){
-            console.log("atividade atualizada com sucesso");
+            console.log("Atividade atualizada com sucesso");
+            $location.path("/detalhes-atividade/" + atividade._id);
           },
           function(error){
             console.log("Erro ao atualizar...");
@@ -199,9 +187,8 @@
         });
        }
 
-       function carregarAtividades()
-       {
-         AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
+       function carregarAtividades(){
+        AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
            function(response){
              console.log(response.data);
              $scope.atividade = response.data[0];
@@ -209,21 +196,46 @@
            function(error){
              console.log(error.data);
            });
-         return;
        }
 
-       $scope.carregarAtividades = carregarAtividades;
+      $scope.carregarAtividades = carregarAtividades;
 
+      if($stateParams.editarAtividade){
+        
+        $scope.locais = [];
+        LocalService.buscarLocais().then(
+          function(response){
+            console.log(response.data);
+            $scope.locais = response.data;
+          },
+          function(error){
+            console.log(error.data);
+        }
+        );
+        
 
-      if($stateParams.atividadeId){
-        $scope.horarioFrequencia = ["Pontual", "Diário", "Semanal", "Mensal"];
-        $scope.diasDaSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-        carregarAtividades();
+        function arrayToStr(array){
+          var result = "";
+          for(var i in array){
+            result += (array[i] + " ");
+          }
+          return result;
+        }
+
+        $scope.atividade = undefined;
+        AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
+           function(response){
+              $scope.atividade = response.data[0];
+              $scope.atividade.tags = arrayToStr(response.data[0].tags);
+           },
+           function(error){
+             console.log(error.data);
+          }
+        );
         return;
       }
 
-
-      if($stateParams.minhasAtividades){
+      else if($stateParams.minhasAtividades){
         $scope.atividades = [];
         AtividadeService.buscarAtividadePorUsuario($rootScope.token).then(
           function(response){
@@ -236,7 +248,7 @@
         return;
       }
 
-      if($stateParams.cadastrarAtividade){
+      else if($stateParams.cadastrarAtividade){
         $scope.locais = [];
         LocalService.buscarLocais().then(
           function(response){
@@ -249,7 +261,7 @@
         return;
       }
 
-      if($stateParams.agendarAtividade){
+      else if($stateParams.agendarAtividade){
         $scope.horarioFrequencia = ["Pontual", "Diário", "Semana", "Mensal"];
         AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
           function(response){
@@ -260,6 +272,13 @@
             console.log(error.data);
           });
           return;
+      }
+
+      else if($stateParams.atividadeId){
+        $scope.horarioFrequencia = ["Pontual", "Diário", "Semanal", "Mensal"];
+        $scope.diasDaSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+        carregarAtividades();
+        return;
       }
 
       else{

@@ -146,7 +146,7 @@
         }
       })
       .state("editar-atividade-info", {
-        url: "/editar-atividade-info/:atividadeId",
+        url: "/editar-atividade-info/:editarAtividade/:atividadeId",
         templateUrl: "templates/private/editar-atividade-info.html",
         controller: "AtividadeController",
         resolve: {
