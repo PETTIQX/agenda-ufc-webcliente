@@ -60,7 +60,6 @@ footer.page-footer {
 .menu-principal > li{
   position: relative;
   transform: translateX(50%);
-
 }
 
 #mobile-tab{
@@ -83,8 +82,26 @@ footer.page-footer {
   margin-top: 16px;
 }
 
+.logo-icon{
+  height: 60px;
+  width: 54px;
+}
+
 .imagem-cartao-principal{
 
+}
+
+.nav-lateral-logo{
+  height: 64px;
+}
+
+.logo{
+  // position: absolute;
+  color:#fff;
+  display:inline-block;
+  font-size: 1.5rem !important;
+  padding:0 !important;
+  white-space:nowrap !important;
 }
 
 .cartao-principal{

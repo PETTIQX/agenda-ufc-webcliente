@@ -67,6 +67,20 @@ footer.page-footer {
   margin-left: 4%;
   margin-top: 16px; }
 
+.logo-icon {
+  height: 60px;
+  width: 54px; }
+
+.nav-lateral-logo {
+  height: 64px; }
+
+.logo {
+  color: #fff;
+  display: inline-block;
+  font-size: 1.5rem !important;
+  padding: 0 !important;
+  white-space: nowrap !important; }
+
 .cartao-principal {
   width: 300px !important;
   float: left; }
