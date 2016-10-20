@@ -90,7 +90,7 @@ footer.page-footer {
 
 @media screen and (max-width: 992px) {
   #mobile-tab {
-    position: static;
+    position: relative;
     visibility: visible; } }
 
 @media screen and (max-width: 667px) {
