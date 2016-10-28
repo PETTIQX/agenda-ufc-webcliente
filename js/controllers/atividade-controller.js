@@ -265,8 +265,7 @@
         $scope.horarioFrequencia = ["Pontual", "Diário", "Semana", "Mensal"];
         AtividadeService.buscarAtividadePorId($stateParams.atividadeId).then(
           function(response){
-            console.log(response.data);
-            $scope.atividade = response.data;
+            $scope.atividade = response.data[0];
           },
           function(error){
             console.log(error.data);
