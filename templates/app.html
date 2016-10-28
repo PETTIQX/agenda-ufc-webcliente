@@ -6,7 +6,7 @@
 </script>
 <ul class="tabs blue darken-4" id="mobile-tab">
   <li class="tab col s3"><a class="white-text" href="#hoje">Hoje</a></li>
-  <li class="tab col s3"><a class="white-text active" href="#semana">Semana</a></li>
+  <li class="tab col s3"><a class="white-text" href="#semana">Semana</a></li>
   <li class="tab col s3"><a class="white-text" href="#mes">Mês</a></li>
   <div class="indicator white"></div>
 </ul>
@@ -25,29 +25,47 @@
       </div>
     </nav>
 
-      <div id="hoje">
-        <h2>Eventos do dia</h2>
-      </div>
-
-      <div id="semana" class="content-cards">
-        <div ng-repeat="atividade in atividades | filter : searchAtividade" class="margin-card cartao-principal">
-          <div class="card small">
-            <div class="card-image imagem-cartao-principal">
-              <img class="" ng-if="atividade.imagemPrincipal" ng-src="{{imageAddress + atividade.imagemPrincipal}}">
-              <img ng-if="!atividade.imagemPrincipal" src="img/atividade.jpg" alt="" />
-            </div>
-            <div class="card-content">
-              <span style="font-size:16px;">{{atividade.nome}}</span>
-            </div>
-            <div class="card-action">
-              <a ui-sref="atividade-detalhes({atividadeId: atividade._id})" class="btn blue">Detalhes</a>
+      <div id="hoje" class="content-cards">
+        <div id="semana" class="content-cards">
+          <div ng-repeat="atividade in atividadesDia | filter : searchAtividade" class="margin-card cartao-principal">
+            <div class="card small">
+              <div class="card-image imagem-cartao-principal">
+                <img class="" ng-if="atividade.imagemPrincipal" ng-src="{{imageAddress + atividade.imagemPrincipal}}">
+                <img ng-if="!atividade.imagemPrincipal" src="img/atividade.jpg" alt="" />
+              </div>
+              <div class="card-content">
+                <span style="font-size:16px;">{{atividade.nome}}</span>
+              </div>
+              <div class="card-action">
+                <a ui-sref="atividade-detalhes({atividadeId: atividade._id})" class="btn blue">Detalhes</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div id="mes">
-        <h2>Eventos do mês</h2>
+      <div id="semana" class="content-cards">
+      
+      </div>
+
+      <div id="mes" class="content-cards">
+        
+        <div id="semana" class="content-cards">
+          <div ng-repeat="atividade in atividadesMes | filter : searchAtividade" class="margin-card cartao-principal">
+            <div class="card small">
+              <div class="card-image imagem-cartao-principal">
+                <img class="" ng-if="atividade.imagemPrincipal" ng-src="{{imageAddress + atividade.imagemPrincipal}}">
+                <img ng-if="!atividade.imagemPrincipal" src="img/atividade.jpg" alt="" />
+              </div>
+              <div class="card-content">
+                <span style="font-size:16px;">{{atividade.nome}}</span>
+              </div>
+              <div class="card-action">
+                <a ui-sref="atividade-detalhes({atividadeId: atividade._id})" class="btn blue">Detalhes</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
 

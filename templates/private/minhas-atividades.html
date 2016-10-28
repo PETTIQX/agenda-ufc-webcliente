@@ -20,7 +20,8 @@ $(document).ready(function(){
             <!--Card para cada atividade-->
             <div class="card small">
               <div ng-if="atividade.imagens.length > 0" class="card-image">
-                <img ng-src="{{imageAddress + atividade.imagens[0]}}">
+                <img class="" ng-if="atividade.imagemPrincipal" ng-src="{{imageAddress + atividade.imagemPrincipal}}">
+                <img ng-if="!atividade.imagemPrincipal" src="img/atividade.jpg" alt="" />
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{atividade.nome}}</span>

@@ -8,6 +8,7 @@
 
         var BUSCA_ATIVIDADES = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES);
         var BUSCA_ATIVIDADES_PRIVADA = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES_PRIVADA);
+        var BUSCA_ATIVIDADES_AVANCADA = AppTollkit.serviceAddress(routes.BUSCA_ATIVIDADES_AVANCADA);
         var PRIVATE_ATIVIDADE = AppTollkit.serviceAddress(routes.PRIVATE_ATIVIDADE);
         var UPLOAD_IMAGEM = AppTollkit.serviceAddress(routes.UPLOAD_IMAGEM);
         var DEL_IMAGEM  = AppTollkit.serviceAddress(routes.DEL_IMAGEM);
@@ -22,6 +23,17 @@
             };
 
             return $http.post(BUSCA_ATIVIDADES, params);
+        }
+
+        AtividadeService.buscarAtividadesAvancada = buscarAtividadesAvancada;
+
+        function buscarAtividadesAvancada(query) {
+
+            var params = {
+                query:query
+            };
+
+            return $http.post(BUSCA_ATIVIDADES_AVANCADA, params);
         }
 
         AtividadeService.buscarAtividadePorId = buscarAtividadePorId;
