@@ -5,9 +5,9 @@
   });
 </script>
 <ul class="tabs blue darken-4" id="mobile-tab">
-  <li class="tab col s3"><a class="white-text" href="#hoje">Hoje</a></li>
+  <li class="tab col s3"><a class="white-text" ui-sref="app" href="#hoje">Hoje</a></li>
   <li class="tab col s3"><a class="active white-text" href="#semana">Semana</a></li>
-  <li class="tab col s3"><a class="white-text" href="#mes">Mês</a></li>
+  <li class="tab col s3"><a class="white-text" ui-sref="app-mes" href="#mes">Mês</a></li>
   <div class="indicator white"></div>
 </ul>
 
@@ -28,6 +28,8 @@
       <div id="semana" class="content-cards">
 
       </div>
+
+
 
     <div ng-show="user.editor" class="fixed-action-btn horizontal click-to-toggle">
       <a class="btn-floating btn-large blue">
