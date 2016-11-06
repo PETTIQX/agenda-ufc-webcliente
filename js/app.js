@@ -98,8 +98,24 @@
 
     $stateProvider
       .state("app", {
-        url: "/",
-        templateUrl: "templates/app.html",
+        url: "/hoje",
+        templateUrl: "templates/app-hoje.html",
+        controller: "AppController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("app-mes", {
+        url: "/mes",
+        templateUrl: "templates/app-mes.html",
+        controller: "AppController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("app-semana", {
+        url: "/semana",
+        templateUrl: "templates/app-semana.html",
         controller: "AppController",
         resolve: {
           access: ["Access", function (Access) { return Access.isPublic(); }]
