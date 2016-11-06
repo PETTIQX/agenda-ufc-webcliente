@@ -21,7 +21,7 @@
                         }
 
                         //mudar para página inicial
-                        $state.go('app');
+                        $state.go('app-hoje');
                     },
                     function(error){
                         console.log(error.data);

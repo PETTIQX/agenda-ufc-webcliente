@@ -4,7 +4,7 @@
 
   var controllers = angular.module('starter.controllers');
 
-  function AppController($scope, $rootScope, AtividadeService, config) {
+  function AppController($scope, $rootScope,  $stateParams, $state, AtividadeService, config ) {
 
    	$scope.init	 = function(){
 
@@ -12,7 +12,7 @@
    		$scope.atividadesDia = [];
       $scope.atividadesSemana = [];
       $scope.atividadesMes = [];
-      
+
 
       var date = new Date();
       var ultimoDiaDoMes = new Date(date.getFullYear(), date.getMonth() + 1, 0); //Pega o último dia do mês
@@ -24,9 +24,9 @@
         mes : date.getUTCMonth() + 1,
         ano : date.getUTCFullYear(),
         diaDaSemana : date.getDay(),
-        fimDeSemana : date.getDay() === 0 || date.getDay() === 6 
+        fimDeSemana : date.getDay() === 0 || date.getDay() === 6
       };
-      
+
       AtividadeService.buscarAtividadesAvancada(queryDia).then(
 	   		function(response){
 	   			console.log(response.data);
@@ -36,7 +36,7 @@
 	   			console.log(error.data);
 	   		}
    		);
-  
+
       //Semana
       var querySemana = {
         tipo : 2,
@@ -45,7 +45,7 @@
         ano : date.getUTCFullYear(),
         diaDaSemana : date.getDay(),
         fimDeSemana : date.getDay() === 0 || date.getDay() === 6,
-        diaFinal : ultimoDiaDoMes.getUTCDate(), 
+        diaFinal : ultimoDiaDoMes.getUTCDate(),
         mesFinal : date.getUTCMonth() + 1,
         anoFinal : date.getUTCFullYear(),
         diaDaSemanaRange1 : 0, //- Começo do período de busca
@@ -87,7 +87,7 @@
         ano : date.getUTCFullYear(),
         diaDaSemana : date.getDay(),
         fimDeSemana : date.getDay() === 0 || date.getDay() === 6,
-        diaFinal : ultimoDiaDoMes.getUTCDate(), 
+        diaFinal : ultimoDiaDoMes.getUTCDate(),
         mesFinal : date.getUTCMonth() + 1,
         anoFinal : date.getUTCFullYear(),
         diaDaSemanaRange1 : 0, //- Começo do período de busca
@@ -125,7 +125,7 @@
 
   }
 
-  AppController.$inject = ["$scope","$rootScope", "AtividadeService", "config"];
+  AppController.$inject = ["$scope","$rootScope", "$stateParams", "$state", "AtividadeService", "config"];
 
   module.exports = controllers.controller("AppController", AppController);
 })();
