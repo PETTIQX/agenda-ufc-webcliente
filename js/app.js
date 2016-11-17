@@ -96,31 +96,9 @@
     */
 
     $stateProvider
-<<<<<<< HEAD
-      .state("app", {
-        url: "/hoje",
-        templateUrl: "templates/app-hoje.html",
-        controller: "AppController",
-        resolve: {
-          access: ["Access", function (Access) { return Access.isPublic(); }]
-        }
-      })
-      .state("app-mes", {
-        url: "/mes",
-        templateUrl: "templates/app-mes.html",
-        controller: "AppController",
-        resolve: {
-          access: ["Access", function (Access) { return Access.isPublic(); }]
-        }
-      })
-      .state("app-semana", {
-        url: "/semana",
-        templateUrl: "templates/app-semana.html",
-=======
       .state("app-hoje", {
         url: "/hoje",
         templateUrl: "templates/app-hoje.html",
->>>>>>> dcfb83d54f79c53cf08b2403d37dfe3b86e61e81
         controller: "AppController",
         resolve: {
           access: ["Access", function (Access) { return Access.isPublic(); }]
@@ -142,8 +120,6 @@
           access: ["Access", function (Access) { return Access.isPublic(); }]
         }
       })
-
-
       .state("atividade-detalhes", {
         url: "/detalhes-atividade/:atividadeId",
         templateUrl: "templates/detalhes-atividade.html",
