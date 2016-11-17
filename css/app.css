@@ -86,7 +86,8 @@ footer.page-footer {
   float: left; }
 
 .content-cards {
-  text-align: center; }
+  text-align: center;
+  display: block !important; }
 
 @media screen and (max-width: 992px) {
   #mobile-tab {

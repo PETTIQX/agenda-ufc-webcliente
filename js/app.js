@@ -53,7 +53,6 @@
   .run(["$rootScope", "Access", "$state", function ($rootScope, Access, $state) {
 
     if(localStorage.token){
-      console.log("testeLogin", localStorage.token);
       $rootScope.auth = true;
       $rootScope.token = localStorage.token;
       $rootScope.user = JSON.parse(localStorage.user);
@@ -63,13 +62,13 @@
       //em alguns casos mandar para login
       console.log(error);
       if (error == Access.UNAUTHORIZED) {
-        $state.go("app");
+        $state.go("app-hoje");
       } else if (error == Access.FORBIDDEN) {
-        $state.go("app");
+        $state.go("app-hoje");
       } else if( error == Access.OK){
-        $state.go("app");
+        $state.go("app-hoje");
       } else{
-        $state.go("app");
+        $state.go("app-hoje");
       }
     });
 
@@ -97,9 +96,31 @@
     */
 
     $stateProvider
+<<<<<<< HEAD
       .state("app", {
         url: "/hoje",
         templateUrl: "templates/app-hoje.html",
+        controller: "AppController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("app-mes", {
+        url: "/mes",
+        templateUrl: "templates/app-mes.html",
+        controller: "AppController",
+        resolve: {
+          access: ["Access", function (Access) { return Access.isPublic(); }]
+        }
+      })
+      .state("app-semana", {
+        url: "/semana",
+        templateUrl: "templates/app-semana.html",
+=======
+      .state("app-hoje", {
+        url: "/hoje",
+        templateUrl: "templates/app-hoje.html",
+>>>>>>> dcfb83d54f79c53cf08b2403d37dfe3b86e61e81
         controller: "AppController",
         resolve: {
           access: ["Access", function (Access) { return Access.isPublic(); }]
@@ -121,6 +142,8 @@
           access: ["Access", function (Access) { return Access.isPublic(); }]
         }
       })
+
+
       .state("atividade-detalhes", {
         url: "/detalhes-atividade/:atividadeId",
         templateUrl: "templates/detalhes-atividade.html",
@@ -203,12 +226,12 @@
       })
       .state("otherwise",{
         url: "{path:.*}",
-        templateUrl: "templates/app.html",
+        templateUrl: "templates/app_hoje.html",
         controller: "AppController",
         resolve: {
           access: ["Access", function (Access) { return Access.isOtherwise(); }]
         }
-      });
+      })
 
       //$urlRouterProvider.otherwise("/");
 

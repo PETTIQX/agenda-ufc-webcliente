@@ -13,11 +13,19 @@
       <a href="#" class="valign white-text logo">Agenda UFC</a>
     </div>
   </div>
+<<<<<<< HEAD
   <ul class="menu-principal ">
     <li><a ui-sref="app" class="white-text">Hoje</a></li>
     <li><a ui-sref="app-semana" class="white-text">Semana</a></li>
     <li><a ui-sref="app-mes" class="white-text">Mês</a></li>
     <li ng-show="!auth"><a ui-sref="login({name:'login'})"  class="white-text">Login</a></li>
+=======
+  <ul class="menu-principal" ng-init='init()' >
+    <li><a ui-sref="app-hoje" class="white-text">Hoje</a></li>
+    <li><a ui-sref="app-semana({'#':'semana'})" class="white-text">Semana</a></li>
+    <li><a ui-sref="app-mes" class="white-text">Mês</a></li>
+    <li ng-show="!auth"><a ui-sref="login"  class="white-text">Login</a></li>
+>>>>>>> dcfb83d54f79c53cf08b2403d37dfe3b86e61e81
     <li ng-show="auth"><a  ng-click="logout()" class="white-text">Logout</a></li>
   </ul>
 </div>
